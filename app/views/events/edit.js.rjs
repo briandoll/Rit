@@ -1,0 +1,4 @@
+page.replace_html(dom_id(@event), :partial => 'remote_edit_form', 
+                                          :locals  => { :event => @event })
+page.call "bindDatePickers"
+page.call "bindInFieldLabels"

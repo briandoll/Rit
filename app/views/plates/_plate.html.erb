@@ -1,0 +1,16 @@
+<div class="action"><%= link_to_remote "Edit", :url => edit_plate_url(plate), :method => :get %></div>
+<ul class="plate-name-parts">
+  <li><h2><%= link_to plate.layout_name, plate_path(plate) %></h2></li>
+  <li><h2><%= plate.instance_name %></h2></li>
+  <li><h2><%= plate.plate_name %></h2></li>
+</ul>
+<div class="description"><%= plate.description %></div>
+<div class="count">
+  <%= pluralize plate.plate_editions.size, 'edition' %>
+  <%- unless plate.edition_now.nil? -%>
+  - <span class="live">Live: <%= plate.edition_now.name %></span>
+  <%- end -%>
+  <%- if plate.plate_editions.size > 0 and plate.default_plate_edition.nil? -%>
+  - <span class="notice">This plate has no fallback edition.</span>
+  <%- end -%>
+</div>

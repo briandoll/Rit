@@ -1,0 +1,7 @@
+<h1 class="check-icon"><%= @event.name %></h1>
+<h4><%= pretty_time(@event.start_time) %> - <%= pretty_time(@event.end_time) %></h4>
+<h5><%= @event.description %></h5>
+<%- if @event.live? -%>
+  <div class="live-notice">This Event is LIVE</div>
+<%- end -%>
+<%= render :partial => 'plate_editions/events_plate_editions', :locals  => { :plate_editions => @event.plate_editions.sort_by { |pe| pe.start_time }} %>

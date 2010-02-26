@@ -1,0 +1,6 @@
+<div class="header-form">
+  <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Create new event</a></div>
+  <%= render :partial => "new_form", :locals => { :event => @event } %>
+</div>
+
+<%= render :partial => 'event_row', :collection => @events %>

@@ -1,0 +1,5 @@
+page.replace_html(dom_id(@plate_edition), :partial => @partial, 
+                                          :locals  => { :plate_edition => @plate_edition })
+page.call "setupAllEventSelects"
+page.call "bindDatePickers"
+page.call "bindInFieldLabels"

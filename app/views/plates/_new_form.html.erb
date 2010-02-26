@@ -1,0 +1,8 @@
+<% klasses = ['toggleable', 'item-form'] %>
+<%- if plate.nil? -%>
+  <%- klasses << 'hidden' -%>
+  <%- plate = Plate.new -%>
+<%- end -%>
+<%- form_for plate, :html => { :class => klasses.join(' ') }, :index => "new" do |f| -%>
+  <%= render :partial => 'form_fields', :locals => { :plate => plate, :f => f, :button_text => 'Create', :cancel => nil } %>
+<%- end -%>

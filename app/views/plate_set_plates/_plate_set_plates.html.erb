@@ -1,0 +1,3 @@
+<%- plate_set_plates.each do |plate| -%>
+  <%= render :partial => 'plate_set_plates/plate_set_plate_row', :locals => { :plate_set_plate => plate } %>
+<%- end -%>

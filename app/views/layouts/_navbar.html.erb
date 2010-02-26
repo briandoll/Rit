@@ -1,0 +1,16 @@
+<div id="navbar">
+  <div id="left-navbar">
+    <ul>
+      <%= navbar_li "Plates", plates_path, 'plates' %>
+      <%= navbar_li "Events", events_path, 'events' %>
+    </ul>
+  </div>
+  <div id="right-navbar">
+    <ul>
+      <% if signed_in_as_admin? %>
+        <%= navbar_li "Users", users_path, 'users' %>
+      <% end %>
+      <%= navbar_li "Plate Sets", plate_sets_path, 'plate_sets' %>
+    </ul>
+  </div>
+</div>

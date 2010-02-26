@@ -1,0 +1,2 @@
+page.replace_html(dom_id(@plate_set), :partial => "remote_edit_form", :locals  => { :plate_set => @plate_set })
+page.call "bindInFieldLabels"

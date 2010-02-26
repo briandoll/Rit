@@ -1,0 +1,7 @@
+<% if signed_in_as_admin? %>
+<div class="header-form">
+  <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Create new plate set</a></div>
+  <%= render :partial => "new_form", :locals => { :plate_set => @plate_set } %>
+</div>
+<% end %>
+<%= render :partial => 'plate_set_row', :collection => @plate_sets %>

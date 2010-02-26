@@ -1,0 +1,12 @@
+<%= f.error_messages %>
+<%= labeled_field f, :text_field, :name, 'event name', 'name' %>
+<div class="times">
+  <%= date_hour_tags event, "start_date", "start_hour", f.options[:index], 'start time' %>
+- 
+  <%= date_hour_tags event, "end_date", "end_hour", f.options[:index], 'end time' %>
+</div>
+<%= labeled_field f, :text_area, :description, 'description', 'description-area', { :rows => 3, :cols => 100, :class => 'description' } %>
+<ul class="checkbox">
+  <li><%= f.check_box :publish %> <%= f.label :publish %></li>
+</ul>
+<%= render :partial => 'shared/form_buttons', :locals => { :f => f, :button_text => button_text, :cancel => cancel } %>

@@ -1,0 +1,11 @@
+<div class="item-header">
+  <%- form_tag plates_path, :class => 'filter-form', :method => :get do -%>
+  <ul class="plate-name-parts">
+    <li><%= filter_select "fl", params[:fl], "layout_name" %></li>
+    <li><%= filter_select "fi", params[:fi], "instance_name" %></li>
+    <li><%= filter_select "fp", params[:fp], "plate_name" %></li>
+    <li class="action"><%= submit_tag "Filter" %></li>
+    <li class="action"><%= link_to "Clear", plates_path %></li>
+  </ul>
+  <%- end -%>
+</div>

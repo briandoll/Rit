@@ -1,0 +1,8 @@
+<% klasses = ['toggleable', 'item-form', 'plate-edition-form'] %>
+<% if plate_edition.nil? %>
+  <% klasses << 'hidden' %>
+  <% plate_edition = PlateEdition.new %>
+<% end %>
+<% form_for plate_edition, :url => plate_path(plate), :html => { :class => klasses.join(' ') }, :index => "new_plate_edition" do |f| %>
+  <%= render :partial => 'plate_editions/form_fields', :locals => { :plate_edition => plate_edition, :f => f, :button_text => 'Create', :cancel => nil } %>
+<% end %>

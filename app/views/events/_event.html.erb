@@ -1,0 +1,5 @@
+<div class="action"><%= link_to_event_edit(event) %></div>
+<h2><%= link_to event.name, event_path(event), :class => event_klasses(event) %></h2>
+<div class="times"><%= pretty_time(event.start_time) %> - <%= pretty_time(event.end_time) %></div>
+<div class="description"><%= event.description %></div>
+<div class="count"><%= pluralize event.plate_editions.size, 'edition' %></div>

@@ -1,0 +1,6 @@
+<h2>Upcoming start times</h2>
+<ul>
+<% start_times.keys.sort.each do |t| %>
+  <li><%= start_time_text(t, start_times[t]) %></li>
+<% end unless start_times.nil? %>
+</ul>

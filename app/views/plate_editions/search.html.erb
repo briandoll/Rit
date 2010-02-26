@@ -1,0 +1,5 @@
+<h1>Search Results</h1>
+<%= render :partial => 'search_plate_editions', :locals => { :plate_editions => @plate_editions } %>
+<%- content_for :javascript do -%>
+  <%= events_json %>
+<%- end -%>

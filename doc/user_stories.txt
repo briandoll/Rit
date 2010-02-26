@@ -1,0 +1,415 @@
+rit. User Stories and Tests
+===========================
+
+
+As a content creator, I want to
+- log in to create and edit content
+description
+content creators will each have an account to log in and create/edit content
+
+story tests
+happy path:
+* user is able to log in with their email address and password
+
+sad path:
+* when a user forgets their password they can reset it by using the forgot password feature
+* when a user attempts to log into a non-approved account, they are not able to log in
+
+
+
+
+- create a new edition of a plate
+description
+content creators can create a new edition of a plate
+
+story tests
+happy path:
+* user is able to create a new edition of a plate
+
+sad path:
+* cannot save without familiar name
+
+
+
+
+- edit an existing plate edition
+Content creators can edit the content, familiar name, description, status, start date, end date of a plate
+
+happy path:
+* user is able to edit edition
+
+sad path
+* cannot save if name is blank
+
+
+
+
+- set a fallback edition for a plate
+Content creators can set a fallback edition for a plate to be used when there are no scheduled editions.  The fallback setting only comes into play if no active edition can be found.  If the fallback edition has a schedule, the schedule will be considered first.
+
+A fallback edition must be published.  A fallback edition cannot be added to any event.
+
+The first edition of a plate is automatically fallback.  However, this edition is still not publishable.
+
+happy path:
+* user is able to set the fallback edition, overriding any previously set fallback
+
+sad path:
+* fallback edition cannot be set because the edition is not published
+
+notes:
+Upon creation of a new edition, it will, naturally, not be publishable.  It is up to the layout on the integrating app to handle this gracefully.
+
+
+
+
+
+
+- create a new plates from a plate set
+Content creators can create new plates for a new instance of a layout.
+
+happy path:
+- user is able to create plates
+
+sad path:
+- cannot create without an instance name
+
+
+
+
+- create new events
+Content creators can create new events.
+
+happy path:
+* user is able to create the event
+
+sad path:
+* cannot save without name, start date, end date
+
+
+
+
+- add a plate edition to an event
+Content creators can add plate editions to event to group their scheduling.  The event overrides start and end dates for that particular plate edition.
+
+happy path:
+* user can add an edition to an event
+
+sad path:
+* edition cannot be added because it is a fallback edition
+* can't add two editions from the same plate to the event
+
+questions:
+Can a plate edition belong to multiple events?  No.
+
+
+
+
+- rename all editions in an event
+Content creators can rename all the editions that are part of a single event to one name.
+
+happy path:
+* user can rename all plate editions
+
+sad path:
+
+
+
+
+
+- mark an edition as publishable
+Content creators can flag which editions are ready to publish.
+
+happy path:
+* users can mark the edition as publish (active)
+
+sad path:
+* cannot publish edition if there is no start date
+
+
+
+
+- mark an edition as not publishable
+Content creators can mark an edition as not publishable.  If the edition is currently being published, the edition is taken down.  This is the initial state of any new edition.
+
+happy path:
+* edition is not marked as publish
+* if the edition is currently being published, the edition is taken down
+
+sad path:
+
+
+
+
+- mark all editions in an event as publishable
+Content creators can flag all editions in an event as ready to publish.
+
+happy path:
+* all editions are marked as publishable
+
+sad path:
+* cannot mark events if event end_date is in the past
+
+
+
+
+- mark an event as publishable
+Content creators can flag which events are ready to publish.
+
+happy path:
+* users can mark the edition as publish (active)
+
+sad path:
+* cannot publish event if end date is in the past
+* cannot publish event if any editions are not marked as publishable
+
+
+
+
+- mark an event as not publishable
+Content creators can mark an event as not publishable.  If the event is currently being published, the event is taken down.  This is the initial state of any new event.
+
+happy path:
+* event is not marked as publish
+* if the event is currently being published, all the editions associated with the event are taken down
+
+sad path:
+
+
+
+- be alerted when there is no fallback edition for a plate
+Content creators should be notified when there is no publishable fallback edition
+
+happy path:
+* user is notified through an alert or banner
+
+sad path:
+
+
+
+
+- see all plates that have no publishable fallback edition
+Content creators can see a list of all plates without fallbacks that are publishable
+
+happy path:
+* user sees a list of plates without publishable fallbacks
+
+sad path:
+
+
+
+
+- schedule a plate edition to activate and deactivate by hour
+Content creators can schedule plate editions to activate.  They can also schedule deactivation, but it is not required.
+
+happy path:
+* user can schedule an edition to activate, if marked as active, edition activates on that day
+* user can schedule an edition to deactivate, if marked as active, edition deactivates on that day
+
+sad path:
+* cannot save if end_date is before start_date
+
+editions don't require end_dates
+
+
+
+
+- schedule an event to activate and deactivate by hour
+Content creators can schedule plate editions to activate and deactivate.  Event scheduling overrides any edition scheduling.
+
+When two overlapping events that contain different editions for the same plate, go by start date.  Plate editions override events.  If there are matches by same type of start date, go with last updated at.
+
+happy path:
+* user can schedule an event to activate, if all editions marked as active, all editions belonging to that event activate on that day
+* user can schedule an event to deactivate, if all editions marked as active, all editions belonging to that event deactivate on that day
+
+sad path:
+* cannot save if end_date is before start_date
+
+
+
+
+- clearly see which plate edition is active on any given date
+happy path:
+* A timeline for a plate showing all changes in a given date range
+
+sad path:
+
+
+
+
+- clearly see which events are active on any given date
+happy path:
+* A timeline showing event changes and their associated edition changes
+
+sad path:
+
+
+
+
+- clearly see any upcoming scheduled activations that are not marked as publishable
+happy path:
+* upcoming schedules editions that are not publishable are highlighted
+
+sad path:
+
+
+
+
+- be alerted if the edition I'm editing is currently live
+Content creators should be aware that the changes they are making will be live immediately.
+
+happy path:
+* users can see a pop up or banner with a warning.
+
+sad path:
+
+notes:
+Fo realz?
+
+
+
+
+- be alerted if the event I'm attaching an edition to is currently live
+Content creators should be aware that the changes they are making MAY be go live immediately.  It is difficult to know definitively without knowing which event they are attaching to.  Or is it?
+
+happy path:
+* users can see a pop up or banner with a warning
+
+notes:
+When we load the event list, we can know whether this plate edition will go live or not.  I think we can alert the user whether the plate they are attaching will be live immediately.
+
+Fo realz?
+
+
+
+
+- preview the entire site by date
+Content creators can browse the app for any given date in the future, taking into account all scheduling.
+
+happy path:
+* user can see the app on a given date in the future in a frame while in rit.'s screens
+
+sad path:
+* site does not show because app is not properly integrated with rit. to receive date settings
+* cannot preview site for a date in the past
+
+
+
+
+- search plate edition content
+Content creators can search the contents of all plate editions for a string
+
+happy path:
+* user can see a list of plate editions with content matching the search string
+
+sad path:
+* cannot search with blank string
+* string cannot be found in any of the content
+
+
+
+
+- upload media so that it is available on the live site
+Content creators can upload media (images, sounds, movies) through a Media Browser so that it's available on the live site.  In our case, this will be uploaded to the CDN (through the assets server).  Content creators may then reference the media by URL in their editions.
+
+happy path:
+* user can upload the media and the media is available on the live site
+
+sad path:
+* cannot upload if the media format is unsupported
+* cannot upload if the media is too large
+* cannot upload if the filename already exists
+
+
+
+
+(reject) preview all pages affected by an event
+Content creators should be able to preview all pages affected by an event.  If there is an conflicting edition or event that occurs over the lifetime of the event, the user will be notified.  The preview of the page will show the actual state of the site on any given day, including conflicts.  This is actually duplicate functionality as preview site by date
+
+happy path:
+* Users can see a list of pages involved in the event.
+
+reasons for rejection:
+The API does not designate a way for the app to call for a specific plate edition.  The app may only call out for a plate name and the date, which returns the edition that will show on that date, according to all schedules and events.
+
+
+
+
+(reject) preview a page by date
+Content creators can preview the page that is associated with the plate they are currently working on.
+
+reasons for rejection:
+rit. does not have know what route a plate may belong to.  Also, with the one to many relationship of plates to layouts, which would we show.  This is being removed to keep rit. more focused.
+
+
+
+
+
+
+
+
+
+As an administrator, I want to...
+- create a new user
+Admins can create a new user account with email, name, and mark them as admins.
+
+happy path:
+* user is created
+
+sad path:
+* cannot create user without valid email
+* cannot create user with a duplicate email
+
+
+
+
+- suspend a user
+Admins can suspended existing users from logging into the system.
+
+happy path:
+* user can no longer log into rit.
+* any user currently logged in is logged out (on their next page load)
+
+sad path:
+
+
+
+
+
+- edit a user
+Admins can edit a user's email, name and admin flag.
+
+happy path:
+* the user account is updated
+
+sad path:
+* cannot update without a valid email
+* cannot update with a duplicate email
+
+
+
+
+- create a new plate
+Administrators can create a new plate.  A new plate has no editions.
+
+happy path:
+* user is able to create a new plate
+
+sad path:
+* cannot save without description, layout_name, plate_name
+
+
+
+
+- create a new plate set
+Admins can create a new plate set for users to create new plates for a new layout instance
+
+happy path:
+* user is able to create a plate set
+
+sad path:
+* cannot save without name, layout_name, plate_names
+
+
+

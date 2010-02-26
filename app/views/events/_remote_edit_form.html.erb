@@ -1,0 +1,4 @@
+<% remote_form_for event, :index => event.id, :html => { :class => 'item-form'} do |f| %>
+  <%- cancel = link_to_remote("Cancel", :url => show_row_event_path(event), :update => dom_id(event), :method => :get) -%>
+  <%= render :partial => 'form_fields', :locals => { :f => f, :event => event, :button_text => 'Update', :cancel => cancel } %>
+<% end %>

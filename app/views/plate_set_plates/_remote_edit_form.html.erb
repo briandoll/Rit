@@ -1,0 +1,4 @@
+<% remote_form_for plate_set_plate, :index => plate_set_plate.id, :html => { :class => 'item-form'} do |f| %>
+  <%- cancel = link_to_remote("Cancel", :url => plate_set_plate_path(plate_set_plate), :update => dom_id(plate_set_plate), :method => :get) -%>
+  <%= render :partial => 'form_fields', :locals => { :f => f, :plate_set_plate => plate_set_plate, :button_text => 'Update', :cancel => cancel } %>
+<% end %>

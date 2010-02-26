@@ -1,0 +1,12 @@
+<%= form.error_messages %>
+<%= labeled_field form, :text_field, :email %>
+<%= labeled_field form, :password_field, :password %>
+<%= labeled_field form, :password_field, :password_confirmation, "confirm password" %>
+
+<% if signed_in_as_admin? %>
+  <ul class="checkbox">
+    <li><%= form.check_box :admin %> <%= form.label :admin, "Admin" %></li>
+    <li><%= form.check_box :active %> <%= form.label :active, "Active" %></li>
+    
+  </ul>
+<% end %>

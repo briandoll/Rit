@@ -1,0 +1,8 @@
+<div class="header-form">
+  <div class="content-action">Edit user</div>
+    <% form_for @user, :html => { :class => 'item-form' } do |form| %>
+      <%= render :partial => '/users/form', :object => form %>
+      <%= form.submit 'Update', :disable_with => 'Please wait...' %>
+    <% end %>
+  </div>
+</div>

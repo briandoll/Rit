@@ -1,0 +1,16 @@
+<h1><%= link_to @plate.layout_name, plates_path(:fl => @plate.layout_name ) %> : <%= link_to @plate.instance_name, plates_path(:fl => @plate.layout_name, :fi => @plate.instance_name) unless @plate.instance_name.blank? %> : <%= @plate.plate_name %></h1>
+<h5><%= @plate.description %></h5>
+<div class="header-form">
+  <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Create a new edition</a></div>
+  <%= render :partial => 'plate_editions/new_form', :locals => { :plate_edition => @plate_edition, :plate => @plate } %> 
+</div>
+<%= render :partial => 'shared/main_content_notice', :locals => { :notices => @notices } %>
+
+<div id="right-column">
+<%= render :partial => 'shared/start_times', :locals => { :start_times  => @plate.edition_start_times } %>
+</div>
+
+<%= render :partial => 'plate_editions/plate_editions', :locals  => { :plate_editions => @sorted_editions } %>
+<%- content_for :javascript do -%>
+  <%= events_json %>
+<%- end -%>

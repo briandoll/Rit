@@ -1,0 +1,23 @@
+<div id="users-content">
+  <div class="header-form">
+    <div class="content-action"><%= link_to "Create New User", new_user_url %></div>
+  </div>
+  
+  <div class="item-header">
+    <ul class="user-row">
+      <li>Email</li>
+      <li>Admin</li>
+      <li>Active</li>
+    </ul>
+  </div>
+  
+  <% @users.each do |u| %>
+  <div class="item-row">
+    <ul class="user-row">
+      <li><%= link_to u.email, user_url(u) %></li>
+      <li class="<%= u.admin ? 'check-icon' : 'cross-icon' %>">&nbsp;</li>
+      <li class="<%= u.active ? 'check-icon' : 'cross-icon' %>">&nbsp;</li>
+    </li>
+  </div>
+  <% end %>
+</div>

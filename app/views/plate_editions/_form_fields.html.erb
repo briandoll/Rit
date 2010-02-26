@@ -1,0 +1,17 @@
+<%= f.error_messages %>
+<%= labeled_field f, :text_field, :name, 'edition name', 'name' %>
+<div class="times">
+  <%= collection_select :plate_edition, :event_id, Event.all_cached, :id, :name, 
+                        { :include_blank => 'Choose event' }, 
+                        { :index => f.options[:index], :class => "event" } %>
+  <%= date_hour_tags plate_edition, "start_date", "start_hour", f.options[:index], 'start time', 'start' %>
+- 
+  <%= date_hour_tags plate_edition, "end_date", "end_hour", f.options[:index], 'end time', 'end' %>
+</div>
+<%= labeled_field f, :text_area, :description, 'description', 'description-area', { :rows => 3, :cols => 100, :class => 'description' } %>
+<%= labeled_field f, :text_area, :content, 'content', 'content-area', { :rows => 10, :cols => 100, :wrap => 'off', :class => 'content' } %>
+<ul class="checkbox">
+  <li><%= f.check_box :publish %> <%= f.label :publish %></li>
+  <li><%= f.check_box :default_edition %> <%= f.label :default_edition, "Fallback edition" %></li>
+</ul>
+<%= render :partial => 'shared/form_buttons', :locals => { :f => f, :button_text => button_text, :cancel => cancel } %>

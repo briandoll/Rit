@@ -1,0 +1,3 @@
+TODO:
+ - Release the Rit. client code as a gem
+ - Develop syntax to support content that includes Rails helper calls that can be eval'd from the Rit. client

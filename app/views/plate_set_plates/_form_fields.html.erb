@@ -1,0 +1,4 @@
+<%= f.error_messages %>
+<%= labeled_field f, :text_field, :plate_name, 'plate name', 'plate name' %>
+<%= labeled_field f, :text_area, :description, 'description', 'description-area', { :rows => 2, :cols => 100, :class => 'description' } %>
+<%= render :partial => 'shared/form_buttons', :locals => { :f => f, :button_text => button_text, :cancel => cancel } %>

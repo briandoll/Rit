@@ -1,0 +1,6 @@
+# For each environment you need to use, define the following:
+
+envname-login: &envname-login
+  username: user
+  password: password
+  host: hostame

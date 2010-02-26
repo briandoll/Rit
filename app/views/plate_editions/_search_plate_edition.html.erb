@@ -1,0 +1,14 @@
+<% pe = plate_edition %>
+<div class="action">
+  <%= link_to_plate_edition_edit(pe, 'plate_editions/search_remote_edit_form')  %>
+</div>
+<div class="toggle <%= plate_edition_klasses(pe) %>"><h2><%= link_to "#{pe.plate.layout_name}:#{pe.plate.instance_name}:#{pe.plate.plate_name}", plate_url(pe.plate) %> - <a href="#"><%= pe.name %></a> <%= pe.default_edition ? '<span class="fallback">(fallback)</span>' : '' %></h2></div>
+<%- unless plate_edition.event.nil? -%>
+  <%- times_klasses = " event " + (plate_edition.event.publish ? 'check-icon' : 'cross-icon') -%>
+<%- end -%>
+<div class="times<%= times_klasses %>">
+  <%= link_to(plate_edition.event.name + ': ',event_path(plate_edition.event)) unless plate_edition.event.nil? %>
+  <%= pretty_time(pe.start_time) %> - <%= pretty_time(pe.end_time) %>
+</div>
+<div class="description"><%= pe.description %></div>
+<div class="content hidden toggleable"><%= h pe.content %></div>

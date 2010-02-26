@@ -1,0 +1,9 @@
+<%- unless notices.nil? -%>
+<div class="notice">
+  <ul>
+    <%- notices.each do |notice| -%>
+      <li><%= notice %></li>
+    <%- end -%>
+  </ul>
+</div>
+<%- end -%>

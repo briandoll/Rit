@@ -1,0 +1,1 @@
+page.redirect_to plate_set_path(@plate_set_plate.plate_set)

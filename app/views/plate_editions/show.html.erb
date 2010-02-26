@@ -1,0 +1,48 @@
+<p>
+  <b>Plate:</b>
+  <%=h @plate_edition.plate_id %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%=h @plate_edition.event_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @plate_edition.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @plate_edition.content %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @plate_edition.description %>
+</p>
+
+<p>
+  <b>Publish:</b>
+  <%=h @plate_edition.publish %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%=h @plate_edition.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%=h @plate_edition.end_time %>
+</p>
+
+<p>
+  <b>Default edition:</b>
+  <%=h @plate_edition.default_edition %>
+</p>
+
+
+<%= link_to 'Edit', edit_plate_edition_path(@plate_edition) %> |
+<%= link_to 'Back', plate_editions_path %>

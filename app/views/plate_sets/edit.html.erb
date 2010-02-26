@@ -1,0 +1,24 @@
+<h1>Editing plate_set</h1>
+
+<% form_for(@plate_set) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :layout_name %><br />
+    <%= f.text_field :layout_name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @plate_set %> |
+<%= link_to 'Back', plate_sets_path %>

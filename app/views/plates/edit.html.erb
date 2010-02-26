@@ -1,0 +1,5 @@
+<h2>Edit plate</h2>
+
+<% form_for @plate do |f| %>
+  <%= render :partial => 'form_fields', :locals => { :plate => @plate, :f => f, :button_text => 'Update', :cancel => nil } %>
+<% end %>

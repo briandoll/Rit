@@ -1,0 +1,14 @@
+<h1><%= @plate_set.name %></h1>
+<h1>Layout - <%= @plate_set.layout_name %></h1>
+<% if signed_in_as_admin? %>
+<div class="header-form">
+  <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Add a plate to this set</a></div>
+  <%= render :partial => 'plate_set_plates/new_form', :locals => { :plate_set => @plate_set, :plate_set_plate => @plate_set_plate } %> 
+</div>
+<% end %>
+<div class="header-form continued generate-plates">
+  <div class="content-action">Generate plates for a new page</div>
+  <%= render :partial => 'plate_set_plates/generate_plates_form', :locals => { :plate_set => @plate_set } %>
+</div>
+
+<%= render :partial => 'plate_set_plates/plate_set_plates', :locals => { :plate_set_plates => @plate_set.plate_set_plates } %>

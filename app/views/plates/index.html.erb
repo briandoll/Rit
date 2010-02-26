@@ -1,0 +1,17 @@
+<div class="header-form">
+  <div class="content-action toggle"><%= link_to "Search all edition content", '#', :class => "with-icon magnifier-icon" %></div>
+  <%- form_tag search_plate_editions_path, :method => :get, :class => 'item-form search toggleable hidden' do -%>
+    <%= text_field_tag 'q' %>
+    <%= submit_tag 'search' %>
+  <%- end -%>
+</div>
+<% if signed_in_as_admin? %>
+  <div class="header-form continued">
+    <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Create new plate</a></div>
+    <%= render :partial => "new_form", :locals => { :plate => @plate } %>
+  </div>
+<% end %>
+
+<%= render :partial => 'plate_filter' %>
+
+<%= render :partial => 'plate_row', :collection => @plates %>

@@ -1,0 +1,8 @@
+unless @partial.nil?
+  page.replace_html(dom_id(@plate_edition), :partial => @partial, 
+                                            :locals  => { :plate_edition => @plate_edition })
+  page.replace_html('flashes', :partial => 'layouts/flashes')
+  flash.discard
+else
+  page.redirect_to @success_url
+end

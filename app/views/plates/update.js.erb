@@ -1,0 +1,2 @@
+$("#flashes").html("<%= escape_javascript(render :partial => 'layouts/flashes') %>");
+$("#plate_" + <%= @plate.id %>).html("<%= escape_javascript(render :partial => 'plate', :locals => { :plate => @plate }) %>");

@@ -1,0 +1,9 @@
+<% content_for :section_title do %>
+<% end %>
+
+<% content_for :content do %>
+  <div id="plates-content">
+    <%= yield %>
+  </div>
+<% end %>
+<%= render :file => 'layouts/application' %>

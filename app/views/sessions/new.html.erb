@@ -1,0 +1,15 @@
+<h2>Sign in</h2>
+<!-- http://fuelyourcoding.com/scripts/infield/ -->
+<% form_for :session, :url => session_path do |form| %>
+  <%= labeled_field(form, :text_field, :email, 'email address') %>
+  <%= labeled_field(form, :password_field, :password) %>
+  <div class="submit_field">
+    <%= form.submit "Sign in", :disable_with => "Please wait..." %>
+  </div>
+<% end %>
+
+<ul>
+  <li>
+    <%= link_to "Forgot password?", new_password_path %>
+  </li>
+</ul>

@@ -1,0 +1,12 @@
+<div id="header">
+  <h1><%= link_to "rit.", root_url %></h1>
+  <% if signed_in? %>
+  <div id="menu">
+    <ul>
+      <li>signed in as: <%= current_user.email %></li>
+      <li>|</li>
+      <li><%= link_to("sign out", sign_out_path) if signed_in? %></li>
+    </ul>
+  </div>
+  <% end %>
+</div>

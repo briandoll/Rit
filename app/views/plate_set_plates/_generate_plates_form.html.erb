@@ -1,0 +1,8 @@
+<%- form_tag generate_plates_plate_set_path(@plate_set), :method => :put, :class => 'item-form' do -%>
+  <div class="fieldset">
+    <%= label_tag 'instance_name', 'instance name', :class => 'infield text_field' %>
+    <%= text_field_tag "instance_name" %>
+    <%= submit_tag "Generate" %>
+  </div>
+  <p>Create new plates for all the parts listed below, using the <b><%= @plate_set.layout_name %></b> layout.</p>
+<%- end -%>

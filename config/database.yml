@@ -1,0 +1,17 @@
+# define your logins in the databse-local.yml file!
+<%= File.read(File.join(RAILS_ROOT, 'config/database-local.yml')) %>
+
+development:
+  adapter: mysql
+  database: rit
+  <<: *development-login
+
+test:
+  adapter: mysql
+  database: rit_test
+  <<: *development-login
+
+production:
+  adapter: mysql
+  database: rit_production
+  <<: *production-login
