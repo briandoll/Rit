@@ -83,8 +83,6 @@ class PlateTest < ActiveSupport::TestCase
         @start_times = @plate.edition_start_times
         assert_equal(1, @start_times.size)
         assert_contains_at(@start_times, nil, @edition_1.end_time)
-        
-        p "1: Plate count #{Plate.count}"
       end
 
       should "return a hash when sent :edition_start_times for all start times" do
@@ -92,8 +90,6 @@ class PlateTest < ActiveSupport::TestCase
         assert_equal(2, @start_times.size)
         assert_contains_at(@start_times, @edition_1, @edition_1.start_time)
         assert_contains_at(@start_times, nil, @edition_1.end_time)
-        
-        p "2: Plate count #{Plate.count}"
       end
 
       context "and a default plate edition" do

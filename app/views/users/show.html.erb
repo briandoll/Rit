@@ -1,3 +1,4 @@
+<%- content_for :page_title, "User - #{@user.email}" -%>
 <div class="header-form">
   <div class="content-action">Edit user</div>
     <% form_for @user, :html => { :class => 'item-form' } do |form| %>

@@ -2,14 +2,14 @@ require 'test_helper'
 
 class PlatesControllerTest < ActionController::TestCase
   # TODO - Remove RESTful routes?  Not supporting xml anyway...
-  
+
   # because route order matters
   should_route :post, "/plates", :controller => :plates, :action => :create
   should_route :post, "/plates/1", :controller => :plates, :action => :create_plate_edition, :id => '1'
 
   should_require_user_access_on('GET #index') { get :index }
   should_require_user_access_on('GET #show') { get :show, :id => Factory(:plate).id }
-  should_require_user_access_on('GET #show_row') { get :show_row, :id => Factory(:plate).id }  
+  should_require_user_access_on('GET #show_row') { get :show_row, :id => Factory(:plate).id }
   should_require_admin_access_on('POST #create') { post :create }
   should_require_user_access_on('POST #create_plate_edition') { post :create_plate_edition, :id => Factory(:plate).id }
   should_require_admin_access_on('GET #new') { get :new }
@@ -85,7 +85,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_set_the_flash_to(/deleted/i)
       should_redirect_to('the plate index') { plates_url }
     end
-    
+
     context 'on XHR GET to :show_row' do
       setup { xhr :get, :show_row, :id => Factory(:plate).id }
       should_render_template :plate
@@ -122,7 +122,7 @@ class PlatesControllerTest < ActionController::TestCase
       should("update the instance name") { assert_equal(@attributes['instance_name'], @plate.instance_name) }
       should_render_template 'plates/update.js.erb'
     end
-    
+
     context 'on POST to :create_plate_edition with valid attributes' do
       setup do
         @plate = Factory(:plate)
@@ -150,33 +150,40 @@ class PlatesControllerTest < ActionController::TestCase
       should_render_template :index
       should_not_set_the_flash
     end
-    
+
     context 'on GET to #index' do
       setup do
         Factory(:plate, :layout_name => 'foo', :instance_name => '', :plate_name => 'box-1')
         Factory(:plate, :layout_name => 'foo', :instance_name => '', :plate_name => 'box-2')
       end
-      
+
       context 'with layout filter' do
         setup { get :index, :fl => 'foo' }
-        
+
         should_assign_to :plates
         should "list 2 plates" do
           assert_equal(2, assigns(:plates).size)
         end
         should_respond_with :success
         should_render_template :index
+
+        should "set the page title to 'foo::'" do
+          assert_select 'title', /foo::/
+        end
       end
-      
+
       context "with full filters" do
         setup { get :index, :fl => 'foo', :fi => '', :fp => 'box-1'}
-        
+
         should_assign_to :plates
         should "list 1 plate" do
           assert_equal(1, assigns(:plates).size)
         end
         should_respond_with :success
         should_render_template :index
+        should "set the page title to 'foo::box-1'" do
+          assert_select 'title', /foo::box-1/
+        end
       end
     end
 
@@ -197,19 +204,19 @@ class PlatesControllerTest < ActionController::TestCase
   #
   # PUBLISHING
   #
-  
+
   context "a Plate with no editions" do
     setup do
       @plate = Factory(:plate)
       get_published_plate(@plate)
     end
-    
+
     should "return nothing when sent :publish" do
       assert_nil(assigns(:edition))
       assert_equal('', @response.body)
     end
   end
-  
+
   context "with a singleton Plate and many PlateEditions" do
     setup do
       @plate = Factory(:plate)

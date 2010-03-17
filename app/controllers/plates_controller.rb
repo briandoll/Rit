@@ -9,16 +9,14 @@ class PlatesController < ApplicationController
     append_filter(conditions, args, 'instance_name', params[:fi])
     append_filter(conditions, args, 'plate_name', params[:fp])
     conditions = conditions.join(' AND ')
+    unless params[:fl].blank? and params[:fi].blank? and params[:fp].blank?
+      @filtering = [params[:fl], params[:fi], params[:fp]].map { |f| f == PlatesHelper::FILTER_ALL ? '' : f }.join(":")
+    else
+      @filtering = ''
+    end
     @plates = Plate.find(:all, :include => [ :plate_editions, :default_plate_edition ],
                          :conditions => [conditions, *args]).sort_by { |plate| "#{plate.layout_name}-#{plate.instance_name}-#{plate.plate_name}" } 
     
-  end
-  
-  def append_filter(conditions, args, field_name, value)
-    unless value.nil? or value == 'all'
-      conditions << "#{field_name} = ?"
-      args << value
-    end
   end
 
   def show
@@ -154,4 +152,10 @@ class PlatesController < ApplicationController
     "plate/#{plate.id}/published"
   end
   
+  def append_filter(conditions, args, field_name, value)
+    unless value.nil? or value == PlatesHelper::FILTER_ALL
+      conditions << "#{field_name} = ?"
+      args << value
+    end
+  end
 end

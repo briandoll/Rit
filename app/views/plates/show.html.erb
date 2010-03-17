@@ -1,3 +1,4 @@
+<%- content_for :page_title, "- #{[@plate.layout_name, @plate.instance_name, @plate.plate_name].join(':')}" -%>
 <h1><%= link_to @plate.layout_name, plates_path(:fl => @plate.layout_name ) %> : <%= link_to @plate.instance_name, plates_path(:fl => @plate.layout_name, :fi => @plate.instance_name) unless @plate.instance_name.blank? %> : <%= @plate.plate_name %></h1>
 <h5><%= @plate.description %></h5>
 <div class="header-form">

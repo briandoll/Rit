@@ -1,3 +1,4 @@
+<%- content_for :page_title, "Plates #{@filtering}" -%>
 <div class="header-form">
   <div class="content-action toggle"><%= link_to "Search all edition content", '#', :class => "with-icon magnifier-icon" %></div>
   <%- form_tag search_plate_editions_path, :method => :get, :class => 'item-form search toggleable hidden' do -%>

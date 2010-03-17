@@ -73,7 +73,8 @@ class PlateEditionsController < ApplicationController
   
   def search
     unless params[:q].blank?
-      @plate_editions = PlateEdition.find(:all, :conditions => "content LIKE '%#{params[:q]}%'")
+      @query = params[:q]
+      @plate_editions = PlateEdition.find(:all, :conditions => "content LIKE '%#{@query}%'")
     else
       redirect_to plates_url
     end
