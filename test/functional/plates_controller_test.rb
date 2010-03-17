@@ -134,6 +134,15 @@ class PlatesControllerTest < ActionController::TestCase
       should_assign_to :plate_edition
       should_redirect_to("the plate show") { plate_url(@plate) }
     end
+    
+    context 'on POST to :create_plate_edition with invalid attributes' do
+      setup do
+        @plate = Factory(:plate)
+        post :create_plate_edition, { :id => @plate.id, :plate_edition => { 'new_plate_edition' => {} } }
+      end
+      should_assign_to :plate_edition
+      should_render_template :plate
+    end
   end
 
   context 'A user' do

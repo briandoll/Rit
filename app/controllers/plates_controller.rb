@@ -60,7 +60,11 @@ class PlatesController < ApplicationController
         flash[:notice] = 'PlateEdition was successfully created.'
         format.html { redirect_to plate_url(@plate) }
       else
-        format.html  { render :action => 'show' }
+        format.html do
+          @live_edition = nil
+          @sorted_editions = []
+          render :action => 'show'
+        end
       end
     end
   end
