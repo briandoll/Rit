@@ -69,7 +69,7 @@ class EventsController < ApplicationController
 
   def parse_params
     # forms are indexed so we have to pull out the first params hash
-    new_params = params[:event].first[1]
+    new_params = get_first_indexed_params(:event)
     unless new_params.nil?
       new_params['start_time'] = parse_date_hour(new_params, "start") if new_params.key? 'start_date'
       new_params['end_time'] = parse_date_hour(new_params, "end") if new_params.key? 'end_date'

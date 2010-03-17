@@ -40,7 +40,7 @@ class PlatesController < ApplicationController
 
   # TODO - check for nil plate
   def create
-    @plate = Plate.new(params[:plate].first[1])
+    @plate = Plate.new(get_first_indexed_params(:plate))
     if @plate.save
       flash[:notice] = 'Plate created'
       redirect_to plates_url
@@ -83,7 +83,7 @@ class PlatesController < ApplicationController
   # TODO - check for nil plate
   def update
     @plate = Plate.find(params[:id])
-    saved = @plate.update_attributes(params[:plate].first[1])
+    saved = @plate.update_attributes(get_first_indexed_params(:plate))
     respond_to do |format|
       if saved
         success_message = 'Plate was successfully updated.'

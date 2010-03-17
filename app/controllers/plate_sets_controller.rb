@@ -32,7 +32,7 @@ class PlateSetsController < ApplicationController
 
   # xhr post, html response
   def create
-    @plate_set = PlateSet.new(params[:plate_set].first[1])
+    @plate_set = PlateSet.new(get_first_indexed_params(:plate_set))
 
     respond_to do |format|
       if @plate_set.save
@@ -52,7 +52,7 @@ class PlateSetsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to plate_set_url(@plate_set) }
-      if @plate_set.update_attributes(params[:plate_set].first[1])
+      if @plate_set.update_attributes(get_first_indexed_params(:plate_set))
         flash[:notice] = 'Plate Set was successfully updated.'
         format.js
       else
@@ -72,7 +72,7 @@ class PlateSetsController < ApplicationController
 
   def create_plate
     @plate_set = PlateSet.find(params[:id])
-    @plate_set_plate = PlateSetPlate.new(params[:plate_set_plate].first[1])
+    @plate_set_plate = PlateSetPlate.new(get_first_indexed_params(:plate_set_plate))
     @plate_set_plate.plate_set = @plate_set
 
     respond_to do |format|

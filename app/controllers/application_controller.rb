@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
     time
   end
 
+  # TODO - clean up how we pull the params from indexed forms
+  def get_first_indexed_params(key)
+    params[key][params[key].keys.first]
+  end
 end

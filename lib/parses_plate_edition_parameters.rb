@@ -1,7 +1,7 @@
 module ParsesPlateEditionParameters
   def parse_params
     # forms are indexed so we have to pull out the first params hash
-    new_params = params[:plate_edition].first[1]
+    new_params = get_first_indexed_params(:plate_edition)
     unless new_params.nil?
       if new_params['event_id'].blank?
         new_params['start_time'] = parse_date_hour(new_params, "start") if new_params.key? 'start_date'

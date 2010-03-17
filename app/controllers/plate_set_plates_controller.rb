@@ -26,7 +26,7 @@ class PlateSetPlatesController < ApplicationController
   end
 
   def create
-    @plate_set_plate = PlateSetPlate.new(params[:plate_set_plate].first[1])
+    @plate_set_plate = PlateSetPlate.new(get_first_indexed_params(:plate_set_plate))
     @plate_set = PlateSet.find(params[:plate_set_id])
     @plate_set_plate.plate_set = @plate_set
     respond_to do |format|
@@ -55,7 +55,7 @@ class PlateSetPlatesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to plate_set_url(@plate_set_plate.plate_set) }
-      if @plate_set_plate.update_attributes(params[:plate_set_plate].first[1])
+      if @plate_set_plate.update_attributes(get_first_indexed_params(:plate_set_plate))
         flash[:notice] = 'Plate was successfully updated.'
         format.js
       else
