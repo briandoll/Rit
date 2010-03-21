@@ -138,3 +138,10 @@ The consuming app can retrieve content on a specific date with:
 
 NOTE: Retrieving content on a specific date is not currently cached.
 
+
+Consuming Rit. Content
+----------------------
+
+Install the [rit\_client](http://github.com/briandoll/rit_client) Rails plugin into your app.  Follow the configuration instructions specified in the rit_client readme.
+
+For an overview of how to use Rit and rit_client, please see the [Rit. wiki](http://wiki.github.com/briandoll/Rit/).
