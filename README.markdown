@@ -8,11 +8,25 @@ rit. is a standalone web application that allows users to edit and schedule cont
 
 Design Goals
 ------------
- * CMSes suck, especially Radiant.  We don't want our application to live inside a CMS.
+ * CMSes suck.  We don't want our application to live inside a CMS.
  * Do one thing and do it well.  rit. schedules content.  That's pretty much it.
  * Don't be clever.  We're not clever so we probably can't make a computer clever.
  * Be fast.  Cache in rit. so that the consuming application doesn't have to.
 
+Consuming Rit. Content
+----------------------
+
+Install the [rit\_client](http://github.com/briandoll/rit_client) Rails plugin into your app.  Follow the configuration instructions specified in the rit_client readme.
+
+Getting Started
+---------------
+
+See the [Rit wiki](http://wiki.github.com/briandoll/Rit/) for the latest information.
+
+  * [Installing Rit](http://wiki.github.com/briandoll/Rit/installing-rit)
+  * [Using Rit](http://wiki.github.com/briandoll/Rit/using-rit)
+  * [Plugin Architecture Ideas](http://wiki.github.com/briandoll/Rit/plugin-architecture)
+  * [Sites using Rit](http://wiki.github.com/briandoll/Rit/sites-using-rit)
 
 Terminology
 -----------
@@ -137,11 +151,3 @@ The consuming app can retrieve content on a specific date with:
     http://rit.app/published/<layout name>/<plate name>/<epoch time integer>
 
 NOTE: Retrieving content on a specific date is not currently cached.
-
-
-Consuming Rit. Content
-----------------------
-
-Install the [rit\_client](http://github.com/briandoll/rit_client) Rails plugin into your app.  Follow the configuration instructions specified in the rit_client readme.
-
-For an overview of how to use Rit and rit_client, please see the [Rit. wiki](http://wiki.github.com/briandoll/Rit/).
