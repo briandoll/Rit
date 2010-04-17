@@ -28,6 +28,8 @@ See the [Rit wiki](http://wiki.github.com/briandoll/Rit/) for the latest informa
   * [Plugin Architecture Ideas](http://wiki.github.com/briandoll/Rit/plugin-architecture)
   * [Sites using Rit](http://wiki.github.com/briandoll/Rit/sites-using-rit)
 
+Ideas?  Need help?  Discuss [here](http://getsatisfaction.com/rit).
+
 Terminology
 -----------
 ### Plate
