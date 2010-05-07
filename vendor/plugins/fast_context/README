@@ -1,0 +1,20 @@
+FastContext
+===========
+
+Make your shoulda contexts faster by combining the 'should' blocks.
+
+See http://m.onkey.org/2009/9/20/make-your-shoulda-tests-faster-with-fast_context for details.
+
+Installation
+============
+
+Step 1 : Install the plugin
+
+  $ script/plugin install git://github.com/lifo/fast_context.git
+
+Step 2 : Require fast_context from the test helper
+
+  # RAILS_ROOT/test/test_helper.rb
+  require 'fast_context'
+
+Copyright (c) 2009 Pratik Naik, released under the MIT license
