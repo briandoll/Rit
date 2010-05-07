@@ -1,0 +1,5 @@
+page.replace "new_plate_edition", render(:partial => 'plate_editions/new_form', :locals => { :plate_edition => @plate_edition, :plate => @plate })
+
+page.call "setupAllEventSelects"
+page.call "bindDatePickers"
+page.call "bindInFieldLabels"

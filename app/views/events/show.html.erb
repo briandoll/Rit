@@ -5,4 +5,7 @@
 <%- if @event.live? -%>
   <div class="live-notice">This Event is LIVE</div>
 <%- end -%>
-<%= render :partial => 'plate_editions/events_plate_editions', :locals  => { :plate_editions => @event.plate_editions.sort_by { |pe| pe.start_time }} %>
+
+<%- @sorted_plate_editions.each do |plate_edition| -%>
+  <%= render :partial => 'plate_editions/events_plate_edition', :locals => { :plate_edition => plate_edition } %>
+<%- end -%>

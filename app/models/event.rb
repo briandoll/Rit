@@ -3,8 +3,7 @@ class Event < ActiveRecord::Base
   has_many :plates, :through => :plate_editions
 
   validates_presence_of :name, :start_time, :end_time
-  validate  :end_time_cannot_be_earlier_than_start_time,
-            :publish_cannot_be_set_with_no_plate_editions
+  validate  :end_time_cannot_be_earlier_than_start_time
 
   after_save :set_plate_edition_times, :clear_cache
 
@@ -44,10 +43,6 @@ class Event < ActiveRecord::Base
     unless end_time.nil? or start_time.nil?
       errors.add('end_time', "can't be earlier than start_time") if end_time < start_time
     end
-  end
-
-  def publish_cannot_be_set_with_no_plate_editions
-    errors.add('publish', "can't be set with no plate_editions") if publish and plate_editions.empty?
   end
 
   def set_plate_edition_times

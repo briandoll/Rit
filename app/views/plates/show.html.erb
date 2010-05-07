@@ -11,7 +11,10 @@
 <%= render :partial => 'shared/start_times', :locals => { :start_times  => @plate.edition_start_times } %>
 </div>
 
-<%= render :partial => 'plate_editions/plate_editions', :locals  => { :plate_editions => @sorted_editions } %>
+<%- @sorted_editions.each do |plate_edition| -%>
+  <%= render :partial => 'plate_editions/plate_edition', :locals => { :plate_edition => plate_edition } %>
+<%- end -%>
+
 <%- content_for :javascript do -%>
   <%= events_json %>
 <%- end -%>

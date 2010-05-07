@@ -17,7 +17,7 @@ class PlateEditionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to plate_url(@plate_edition.plate_id) }
-      format.js  { render :partial => @partial, :locals => { :plate_edition => @plate_edition } }
+      format.js
     end
   end
 
@@ -27,6 +27,16 @@ class PlateEditionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to plate_url(@plate_edition.plate_id) }
       format.js  { render :partial => 'plate_edition_preview', :locals => { :plate_edition => @plate_edition } }
+    end
+  end
+
+  def new
+    @plate = Plate.find(params[:plate_id])
+    copy_edition = PlateEdition.find(params[:copy_id])
+    @plate_edition = PlateEdition.new({:name => copy_edition.name, :description => copy_edition.description, :content => copy_edition.content})
+    respond_to do |format|
+      format.html { redirect_to plate_url(@plate_edition.plate_id) }
+      format.js
     end
   end
 
@@ -50,13 +60,16 @@ class PlateEditionsController < ApplicationController
       new_params = parse_params
       if @plate_edition.update_attributes(new_params)
         @success_url = params.fetch(:success_url, plate_url(@plate_edition.plate))
-        @partial = params[:partial]
-        flash[:notice] = 'Plate Edition was successfully updated.'
+        if params[:commit_button] == "Apply"
+          @partial = params.fetch(:form_partial, 'plate_editions/remote_edit_form')
+        else
+          @partial = params.fetch(:partial, 'plate_editions/plate_edition')
+        end
+        @update_notice = 'Plate Edition was successfully updated.'
         format.js
       else
-        @partial = params.fetch(:error_partial, 'plate_editions/remote_edit_form')
+        @partial = params.fetch(:form_partial, 'plate_editions/remote_edit_form')
         format.js  { render :action => 'edit' }
-          # :partial => @error_form_partial, :locals => { :plate_edition => @plate_edition } }
       end
     end
   end

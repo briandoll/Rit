@@ -19,7 +19,7 @@ class EventsControllerTest < ActionController::TestCase
       sign_in_as(@user)
     end
 
-    context 'on GET to #index' do
+    fast_context 'on GET to #index' do
       setup { get :index }
 
       should_assign_to :events
@@ -28,7 +28,7 @@ class EventsControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
 
-    context 'on GET to #show' do
+    fast_context 'on GET to #show' do
       setup { get :show, :id => @event.id }
 
       should_assign_to :event
@@ -37,12 +37,12 @@ class EventsControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
 
-    context 'on GET to #show_row' do
+    fast_context 'on GET to #show_row' do
       setup { get :show_row, :id => @event.id }
       should_render_template 'events/_event.html.erb'
     end
 
-    context 'on POST to :create with valid attributes' do
+    fast_context 'on POST to :create with valid attributes' do
       setup do
         attributes = Factory.attributes_for(:event)
         attributes = params_from_attributes(attributes)
@@ -53,7 +53,7 @@ class EventsControllerTest < ActionController::TestCase
       should_redirect_to("the event show") { event_url(assigns(:event)) }
     end
 
-    context 'on XHR GET to :edit' do
+    fast_context 'on XHR GET to :edit' do
       setup { xhr :get, :edit, :id => @event }
 
       should_assign_to :event
@@ -61,7 +61,7 @@ class EventsControllerTest < ActionController::TestCase
       should_render_template "events/edit.js.rjs"
     end
 
-    context 'on XHR PUT to :update' do
+    fast_context 'on XHR PUT to :update' do
       setup do
         @attributes = { :name => 'new name',
                         :start_time => 1.month.from_now.change(:hour => 12, :min => 0, :sec => 0),

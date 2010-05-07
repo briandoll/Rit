@@ -23,7 +23,7 @@ class PlatesControllerTest < ActionController::TestCase
       sign_in_as(@user)
     end
 
-    context 'on GET to #new' do
+    fast_context 'on GET to #new' do
       setup { get :new }
 
       should_respond_with :success
@@ -31,7 +31,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
 
-    context 'on POST to #create with valid attributes' do
+    fast_context 'on POST to #create with valid attributes' do
       setup do
         attributes = Factory.attributes_for(:plate)
         post :create, :plate => { 'new' => attributes }
@@ -43,7 +43,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_redirect_to("the plates index") { plates_path }
     end
 
-    context 'on GET to #edit' do
+    fast_context 'on GET to #edit' do
       setup do
         @plate = Factory(:plate)
         get :edit, { :id => @plate.id }
@@ -54,7 +54,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_render_template :edit
     end
 
-    context 'on PUT to #update with valid attributes' do
+    fast_context 'on PUT to #update with valid attributes' do
       setup do
         @plate = Factory(:plate)
         # TODO - How much can an admin update versus a user?
@@ -74,7 +74,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_redirect_to('the plate index') { plate_url(@plate) }
     end
 
-    context 'on DELETE to #destroy with a valid id' do
+    fast_context 'on DELETE to #destroy with a valid id' do
       setup do
         @plate = Factory(:plate)
         delete :destroy, :id => @plate.id
@@ -86,12 +86,12 @@ class PlatesControllerTest < ActionController::TestCase
       should_redirect_to('the plate index') { plates_url }
     end
 
-    context 'on XHR GET to :show_row' do
+    fast_context 'on XHR GET to :show_row' do
       setup { xhr :get, :show_row, :id => Factory(:plate).id }
       should_render_template :plate
     end
 
-    context 'on XHR GET to :edit' do
+    fast_context 'on XHR GET to :edit' do
       setup do
         @plate = Factory(:plate)
         xhr :get, :edit, { :id => @plate.id }
@@ -104,7 +104,7 @@ class PlatesControllerTest < ActionController::TestCase
       end
     end
 
-    context 'on XHR POST to :update' do
+    fast_context 'on XHR POST to :update' do
       setup do
         @plate = Factory(:plate)
         # TODO - How much can an admin update versus a user?
@@ -123,7 +123,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_render_template 'plates/update.js.erb'
     end
 
-    context 'on POST to :create_plate_edition with valid attributes' do
+    fast_context 'on POST to :create_plate_edition with valid attributes' do
       setup do
         @plate = Factory(:plate)
         attributes = Factory.attributes_for(:published_plate_edition, :plate => @plate)
@@ -135,7 +135,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_redirect_to("the plate show") { plate_url(@plate) }
     end
     
-    context 'on POST to :create_plate_edition with invalid attributes' do
+    fast_context 'on POST to :create_plate_edition with invalid attributes' do
       setup do
         @plate = Factory(:plate)
         post :create_plate_edition, { :id => @plate.id, :plate_edition => { 'new_plate_edition' => {} } }
@@ -151,7 +151,7 @@ class PlatesControllerTest < ActionController::TestCase
       sign_in_as(@user)
     end
 
-    context 'on GET to #index' do
+    fast_context 'on GET to #index' do
       setup { get :index }
 
       should_assign_to :plates
@@ -166,7 +166,7 @@ class PlatesControllerTest < ActionController::TestCase
         Factory(:plate, :layout_name => 'foo', :instance_name => '', :plate_name => 'box-2')
       end
 
-      context 'with layout filter' do
+      fast_context 'with layout filter' do
         setup { get :index, :fl => 'foo' }
 
         should_assign_to :plates
@@ -181,7 +181,7 @@ class PlatesControllerTest < ActionController::TestCase
         end
       end
 
-      context "with full filters" do
+      fast_context "with full filters" do
         setup { get :index, :fl => 'foo', :fi => '', :fp => 'box-1'}
 
         should_assign_to :plates
@@ -196,7 +196,7 @@ class PlatesControllerTest < ActionController::TestCase
       end
     end
 
-    context 'on GET to #show' do
+    fast_context 'on GET to #show' do
       setup do
         @plate = Factory(:plate)
         get :show, :id => @plate.id
@@ -214,7 +214,7 @@ class PlatesControllerTest < ActionController::TestCase
   # PUBLISHING
   #
 
-  context "a Plate with no editions" do
+  fast_context "a Plate with no editions" do
     setup do
       @plate = Factory(:plate)
       get_published_plate(@plate)
@@ -234,28 +234,28 @@ class PlatesControllerTest < ActionController::TestCase
       @future_edition = Factory(:future_published_plate_edition, :plate => @plate)
     end
 
-    context "on GET to :show for the plate without a date" do
+    fast_context "on GET to :show for the plate without a date" do
       setup do
         get_published_plate(@plate)
       end
       should_publish("the current edition") { @current_edition }
     end
 
-    context "on GET to :show for the plate with a future date" do
+    fast_context "on GET to :show for the plate with a future date" do
       setup do
         get_published_plate(@plate, 1.week.from_now + 1.day)
       end
       should_publish("the future edition") { @future_edition }
     end
 
-    context "on GET to :show for the plate with a past date" do
+    fast_context "on GET to :show for the plate with a past date" do
       setup do
         get_published_plate(@plate, 1.day.ago)
       end
       should_publish("the default edition") { @default_edition }
     end
 
-    context "on GET to :publish with an invalid plate" do
+    fast_context "on GET to :publish with an invalid plate" do
       setup do
         @plate = Factory.build(:plate)
         get_published_plate(@plate)
@@ -272,21 +272,21 @@ class PlatesControllerTest < ActionController::TestCase
       @future_edition = Factory(:future_published_plate_edition, :plate => @plate)
     end
 
-    context "on GET to :show for the plate without a date" do
+    fast_context "on GET to :show for the plate without a date" do
       setup do
         get_published_plate(@plate)
       end
       should_publish("the current edition") { @current_edition }
     end
 
-    context "on GET to :show for the plate with a future date" do
+    fast_context "on GET to :show for the plate with a future date" do
       setup do
         get_published_plate(@plate, 1.week.from_now + 1.day)
       end
       should_publish("the future edition") { @future_edition }
     end
 
-    context "on GET to :show for the plate with a past date" do
+    fast_context "on GET to :show for the plate with a past date" do
       setup do
         get_published_plate(@plate, 1.day.ago)
       end

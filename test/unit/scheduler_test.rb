@@ -93,7 +93,7 @@ class SchedulerTest < ActiveSupport::TestCase
         @appointments = [@appointment_1, @appointment_2]
       end
 
-      context "when sent :timeline, returns a hash that" do
+      fast_context "when sent :timeline, returns a hash that" do
         setup do
           @start_times = Scheduler.timeline(@appointments, @default_appointment)
         end
@@ -137,7 +137,7 @@ class SchedulerTest < ActiveSupport::TestCase
           @appointments = @appointments.sort_by { |a| a.start_time }
         end
 
-        context "when sent :timeline, returns a hash that" do
+        fast_context "when sent :timeline, returns a hash that" do
           setup do
             @start_times = Scheduler.timeline(@appointments, @default_appointment)
           end
@@ -178,7 +178,7 @@ class SchedulerTest < ActiveSupport::TestCase
           @appointments = [@appointment_1, @new_appointment, @appointment_2]
         end
 
-        context "when sent :timeline, returns a hash that" do
+        fast_context "when sent :timeline, returns a hash that" do
           setup do
             @start_times = Scheduler.timeline(@appointments, @default_appointment)
           end
@@ -223,7 +223,7 @@ class SchedulerTest < ActiveSupport::TestCase
         @appointments = [@containing_appointment, @short_appointment, @future_appointment]
       end
 
-      context "when sent :timeline, returns a hash that" do
+      fast_context "when sent :timeline, returns a hash that" do
         setup do
           @start_times = Scheduler.timeline(@appointments, @default_appointment)
         end

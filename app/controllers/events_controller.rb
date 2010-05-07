@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id], :include => :plate_editions)
     if @event.nil?
       redirect_to events_url
+    else
+      @sorted_plate_editions = @event.plate_editions.sort_by { |pe| pe.start_time }
     end
   end
   

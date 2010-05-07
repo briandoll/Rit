@@ -24,7 +24,7 @@ class PlateEditionTest < ActiveSupport::TestCase
     assert_equal('is already part of this Event.  Remove the other Edition first.', @pe_2.errors.on('plate_id'))
   end
   
-  context "A new PlateEdition" do
+  fast_context "A new PlateEdition" do
     setup do
       @pe = PlateEdition.new
     end
@@ -138,7 +138,7 @@ class PlateEditionTest < ActiveSupport::TestCase
                                   :end_time   => @default_end_time)
     end
     
-    context "default_edition" do
+    fast_context "default_edition" do
       should "return [beginning_of_time, default_start_time, default_end_time] when sent :effective_start_times" do
         # TODO - collapse these?
         assert_equal([Plate::BEGINNING_OF_TIME, @default_start_time, @default_end_time], 
@@ -181,7 +181,7 @@ class PlateEditionTest < ActiveSupport::TestCase
                               :end_time    => @time_4)
       end
       
-      context "edition_1" do
+      fast_context "edition_1" do
         should "return [time_1] when sent :effective_start_times" do
           assert_equal([@time_1], @edition_1.effective_start_times)
         end
@@ -223,7 +223,7 @@ class PlateEditionTest < ActiveSupport::TestCase
                                   :end_time   => @time_3_5)
         end
         
-        context "edition_1" do
+        fast_context "edition_1" do
           setup do
             @e = @edition_1
           end
@@ -245,7 +245,7 @@ class PlateEditionTest < ActiveSupport::TestCase
           end
         end
         
-        context "new_edition" do
+        fast_context "new_edition" do
           setup do
             @e = @new_edition
           end
@@ -267,7 +267,7 @@ class PlateEditionTest < ActiveSupport::TestCase
           end
         end
         
-        context "edition_2" do
+        fast_context "edition_2" do
           setup do
             @e = @edition_2
           end
@@ -298,7 +298,7 @@ class PlateEditionTest < ActiveSupport::TestCase
                                   :start_time => @time_1)
         end
         
-        context "edition_1" do
+        fast_context "edition_1" do
           setup do
             @e = @edition_1
           end
@@ -320,7 +320,7 @@ class PlateEditionTest < ActiveSupport::TestCase
           end
         end
         
-        context "new_edition" do
+        fast_context "new_edition" do
           setup do
             @e = @new_edition
           end
@@ -354,7 +354,7 @@ class PlateEditionTest < ActiveSupport::TestCase
           end
         end
         
-        context "edition_2" do
+        fast_context "edition_2" do
           setup do
             @e = @edition_2
           end

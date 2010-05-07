@@ -1,8 +1,9 @@
-unless @partial.nil?
-  page.replace_html(dom_id(@plate_edition), :partial => @partial, 
-                                            :locals  => { :plate_edition => @plate_edition })
-  page.replace_html('flashes', :partial => 'layouts/flashes')
-  flash.discard
-else
-  page.redirect_to @success_url
+page.replace(dom_id(@plate_edition), :partial => @partial,
+                                     :locals  => { :plate_edition => @plate_edition, :show => true })
+page.delay(5) do
+  page.visual_effect :fade, "#{dom_id(@plate_edition)}_notice", :duration => 1
 end
+
+page.call "setupAllEventSelects"
+page.call "bindDatePickers"
+page.call "bindInFieldLabels"

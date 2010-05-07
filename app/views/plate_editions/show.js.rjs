@@ -1,0 +1,1 @@
+page.replace dom_id(@plate_edition), :partial => @partial, :locals => { :plate_edition => @plate_edition }

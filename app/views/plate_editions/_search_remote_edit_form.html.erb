@@ -1,8 +1,13 @@
-<% remote_form_for plate_edition, :index => plate_edition.id, :html => { :class => 'item-form'} do |f| %>
-  <%= hidden_field_tag 'partial', 'plate_editions/search_plate_edition' %>
-  <%= hidden_field_tag 'error_partial', 'plate_editions/search_remote_edit_form' %>
-  <%- cancel = link_to_remote("Cancel", :url => plate_edition_path(plate_edition, :partial => 'plate_editions/search_plate_edition'),
-                                        :update => dom_id(plate_edition),
-                                        :method => :get) -%>
-  <%= render :partial => 'form_fields', :locals => { :f => f, :plate_edition => plate_edition, :button_text => 'Update', :cancel => cancel } %>
-<% end %>
+<div id="<%= dom_id(plate_edition) %>" class="item-row edition-row">
+  <% remote_form_for plate_edition, :index => plate_edition.id, :html => { :class => 'item-form'} do |f| %>
+    <%= hidden_field_tag 'partial', 'plate_editions/search_plate_edition' %>
+    <%= hidden_field_tag 'form_partial', 'plate_editions/search_remote_edit_form' %>
+    <%- cancel = link_to_remote("Cancel", :url => plate_edition_path(plate_edition, :partial => 'plate_editions/search_plate_edition'),
+                                          :update => dom_id(plate_edition),
+                                          :method => :get) -%>
+
+    <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
+
+    <%= render :partial => 'form_fields', :locals => { :f => f, :plate_edition => plate_edition, :button_text => 'Update', :show_apply => true, :cancel => cancel } %>
+  <% end %>
+</div>

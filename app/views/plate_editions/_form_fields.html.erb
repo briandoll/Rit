@@ -14,4 +14,4 @@
   <li><%= f.check_box :publish %> <%= f.label :publish %></li>
   <li><%= f.check_box :default_edition %> <%= f.label :default_edition, "Fallback edition" %></li>
 </ul>
-<%= render :partial => 'shared/form_buttons', :locals => { :f => f, :button_text => button_text, :cancel => cancel } %>
+<%= render :partial => 'shared/form_buttons', :locals => { :f => f, :button_text => button_text, :show_apply => true, :cancel => cancel } %>

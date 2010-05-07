@@ -1,8 +1,13 @@
 <% pe = plate_edition %>
 <% plate = pe.plate %>
-<div class="action">
-  <%= link_to_plate_edition_edit(pe, 'plate_editions/events_remote_edit_form') %>
+
+<div id="<%= dom_id(plate_edition) %>" class="item-row edition-row">
+  <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
+  
+  <div class="action">
+    <%= link_to_plate_edition_edit(pe, 'plate_editions/events_remote_edit_form') %>
+  </div>
+  <div class="toggle with-icon <%= pe.publish ? ' check-icon' : 'cross-icon' %>"><h2><%= link_to "#{pe.plate.layout_name}:#{pe.plate.instance_name}:#{pe.plate.plate_name}", plate_url(pe.plate) %> - <a href="#" class="toggle"><%= pe.name %></a></h2></div>
+  <div class="description"><%= pe.description %></div>
+  <div class="content hidden toggleable"><%= h pe.content %></div>
 </div>
-<div class="toggle with-icon <%= pe.publish ? ' check-icon' : 'cross-icon' %>"><h2><%= link_to "#{pe.plate.layout_name}:#{pe.plate.instance_name}:#{pe.plate.plate_name}", plate_url(pe.plate) %> - <a href="#" class="toggle"><%= pe.name %></a></h2></div>
-<div class="description"><%= pe.description %></div>
-<div class="content hidden toggleable"><%= h pe.content %></div>

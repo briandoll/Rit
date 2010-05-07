@@ -24,7 +24,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       sign_in_as(@user)
     end
 
-    context 'on GET to #index' do
+    fast_context 'on GET to #index' do
       setup { get :index }
 
       should_assign_to :plate_sets
@@ -33,7 +33,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
 
-    context 'on GET to #show' do
+    fast_context 'on GET to #show' do
       setup { get :show, :id => @plate_set.id }
 
       should_assign_to :plate_set
@@ -42,7 +42,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
     
-    context 'on GET to #show_row' do
+    fast_context 'on GET to #show_row' do
       setup { get :show_row, :id => @plate_set.id }
       should_render_template :plate_set
     end
@@ -57,7 +57,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       sign_in_as(@admin_user)
     end
 
-    context 'on POST to :create with valid attributes' do
+    fast_context 'on POST to :create with valid attributes' do
       setup do
         attributes = Factory.attributes_for(:plate_set)
         xhr :post, :create, :plate_set => { 'new' => attributes }
@@ -67,7 +67,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_redirect_to("the plate set show action") { plate_set_url(assigns(:plate_set)) }
     end
 
-    context 'on XHR GET to :edit' do
+    fast_context 'on XHR GET to :edit' do
       setup { xhr :get, :edit, :id => @plate_set }
 
       should_assign_to :plate_set
@@ -75,7 +75,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_render_template "plate_sets/edit.js.rjs"
     end
 
-    context 'on XHR PUT to :update' do
+    fast_context 'on XHR PUT to :update' do
       setup do
         @attributes = { :name => 'new name',
                         :description => 'new desc' }
@@ -90,7 +90,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_render_template "plate_sets/update.js.rjs"
     end
 
-    context 'on POST to :create_plate with valid attributes' do
+    fast_context 'on POST to :create_plate with valid attributes' do
       setup do
         attributes = Factory.attributes_for(:plate_set_plate, :plate_set => @plate_set)
         post :create_plate, { :id => @plate_set.id, :plate_set_plate => { 'new_plate_set_plate' => attributes } }
@@ -100,7 +100,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_redirect_to("the plate_set show action") { plate_set_url(@plate_set) }
     end
 
-    context 'on PUT to :generate_plates' do
+    fast_context 'on PUT to :generate_plates' do
       setup do
         put :generate_plates, :id => @plate_set.id, :instance_name => 'page'
       end

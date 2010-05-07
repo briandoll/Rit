@@ -16,7 +16,7 @@ class PlateSetPlatesControllerTest < ActionController::TestCase
       sign_in_as(@user)
     end
 
-    context "on XHR GET to :index" do
+    fast_context "on XHR GET to :index" do
       setup { xhr :get, :index, :plate_set_id => @plate_set }
 
       should_assign_to :plate_set
@@ -25,7 +25,7 @@ class PlateSetPlatesControllerTest < ActionController::TestCase
       should_render_template :_plate_set_plates
     end
 
-    context 'on XHR GET to :show' do
+    fast_context 'on XHR GET to :show' do
       setup do
         xhr :get, :show, :id => @plate_1.id
       end
@@ -45,7 +45,7 @@ class PlateSetPlatesControllerTest < ActionController::TestCase
       sign_in_as(@admin_user)
     end
 
-    context 'on XHR GET to :edit' do
+    fast_context 'on XHR GET to :edit' do
       setup { xhr :get, :edit, :id => @plate_1 }
 
       should_assign_to :plate_set_plate
@@ -53,7 +53,7 @@ class PlateSetPlatesControllerTest < ActionController::TestCase
       should_render_template "plate_set_plates/edit.js.rjs"
     end
 
-    context 'on XHR PUT to :update' do
+    fast_context 'on XHR PUT to :update' do
       setup do
         @attributes = { :plate_name        => 'new name',
                         :description => 'new description' }

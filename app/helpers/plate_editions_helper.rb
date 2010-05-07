@@ -30,4 +30,12 @@ module PlateEditionsHelper
     link_to_remote("Edit", options)
   end
 
+  def times_div_tag(event)
+    times_klasses = " event " + event_klasses(event) unless event.nil?
+    %Q{<div class="times #{times_klasses}">}
+  end
+
+  def edition_update_notice_div(plate_edition, msg)
+    %Q{<div id="#{dom_id(plate_edition)}_notice" class="row-flash">#{msg}</div>}
+  end
 end

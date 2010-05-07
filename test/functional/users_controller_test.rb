@@ -2,13 +2,13 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
-  context "An admin user" do
+  fast_context "An admin user" do
     setup do
       @admin = Factory(:admin_user)
       sign_in_as(@admin)
     end
     
-    context 'on GET to #index' do
+    fast_context 'on GET to #index' do
       setup { get :index }
       
       should_assign_to :users
@@ -17,7 +17,7 @@ class UsersControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
     
-    context 'on POST to #create with valid attributes' do
+    fast_context 'on POST to #create with valid attributes' do
       setup do
         attributes = Factory.attributes_for(:user)
         post :create, :user => attributes
@@ -31,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
       should_redirect_to("the users index") { users_url }
     end
     
-    context 'on GET to #show' do
+    fast_context 'on GET to #show' do
       setup do
         @user = Factory(:email_confirmed_user)
         get :show, { :id => @user.id }
@@ -45,7 +45,7 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
     
-    context 'on PUT to #update with invalid attributes' do
+    fast_context 'on PUT to #update with invalid attributes' do
       setup do
         @user = Factory(:email_confirmed_user)
         @attributes = { 'email' => @user.email, 
@@ -62,7 +62,7 @@ class UsersControllerTest < ActionController::TestCase
       end
     end
     
-    context 'on PUT to #update with valid attributes, same email' do
+    fast_context 'on PUT to #update with valid attributes, same email' do
       setup do
         @user = Factory(:email_confirmed_user)
         @attributes = { 'email' => @user.email,
@@ -85,7 +85,7 @@ class UsersControllerTest < ActionController::TestCase
       should_redirect_to("the users index") { users_url }
     end
     
-    context 'on PUT to #update with different email' do
+    fast_context 'on PUT to #update with different email' do
       setup do
         @user = Factory(:email_confirmed_user)
         new_email = @user.email.split('@')

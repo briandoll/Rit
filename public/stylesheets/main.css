@@ -446,6 +446,11 @@ div.item-row div.plate {
   font-size: 12px;
 }
 
+div.item-row div.row-flash {
+  padding: 5px; margin: 5px auto; width: 600px;
+  text-align:center; background: #fff9d8; border: 1px solid #ddd;
+}
+
 div.item-row span.notice {
   color: #992b2b;
   font-weight: bold;
