@@ -24,11 +24,10 @@ config.action_view.cache_template_loading            = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 
+# FIXME: setup ActionMailer host, which is required for Clearance
+# config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 # Enable threaded mode
 # config.threadsafe!
 
 config.cache_store = :mem_cache_store, 'example.com:11200', { :namespace => 'rit-prod' }
-
-# clearance settings
-HOST = "rit.example.com"
-DO_NOT_REPLY = "donotreply@example.com"

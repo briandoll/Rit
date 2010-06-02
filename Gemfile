@@ -2,7 +2,7 @@ source :gemcutter
 
 gem 'rails',              '2.3.4'
 gem 'rack',               '1.0.1'
-gem 'clearance',          '0.8.3'
+gem 'clearance',          '0.8.8'
 gem 'hoptoad_notifier',   '2.2.2'
 gem 'jrails',             '0.6.0'
 
