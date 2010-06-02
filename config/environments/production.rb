@@ -27,8 +27,8 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
-config.cache_store = :mem_cache_store, 'memcache07.colo3.sfc:11200', { :namespace => 'rit-prod' }
+config.cache_store = :mem_cache_store, 'example.com:11200', { :namespace => 'rit-prod' }
 
 # clearance settings
-HOST = "rit.sheetmusicplus.com"
-DO_NOT_REPLY = "donotreply@sheetmusicplus.com"
+HOST = "rit.example.com"
+DO_NOT_REPLY = "donotreply@example.com"

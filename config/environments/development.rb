@@ -18,6 +18,6 @@ config.action_mailer.raise_delivery_errors = false
 
 # clearance settings
 HOST = "localhost"
-DO_NOT_REPLY = "donotreply@sheetmusicplus.com"
+DO_NOT_REPLY = "donotreply@example.com"
 
 config.cache_store = :mem_cache_store, { :namespace => 'rit' }
