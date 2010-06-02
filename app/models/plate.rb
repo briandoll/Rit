@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: plates
+#
+#  id            :integer         not null, primary key
+#  layout_name   :string(255)
+#  instance_name :string(255)
+#  plate_name    :string(255)
+#  description   :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+# Indexes
+#
+#  index_plates_on_layout_name_and_instance_name_and_plate_name  (layout_name,instance_name,plate_name) UNIQUE
+#
+
 class Plate < ActiveRecord::Base
   has_many :plate_editions, :dependent => :destroy
   has_one :default_plate_edition, :class_name => "PlateEdition",

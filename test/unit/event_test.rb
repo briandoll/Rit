@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :text
+#  publish     :boolean
+#  start_time  :datetime
+#  end_time    :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase

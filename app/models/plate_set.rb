@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: plate_sets
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  layout_name :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class PlateSet < ActiveRecord::Base
   has_many :plate_set_plates
   

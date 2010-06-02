@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: plates
+#
+#  id            :integer         not null, primary key
+#  layout_name   :string(255)
+#  instance_name :string(255)
+#  plate_name    :string(255)
+#  description   :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+# Indexes
+#
+#  index_plates_on_layout_name_and_instance_name_and_plate_name  (layout_name,instance_name,plate_name) UNIQUE
+#
+
 require 'test_helper'
 
 class PlateTest < ActiveSupport::TestCase

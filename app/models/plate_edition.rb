@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: plate_editions
+#
+#  id              :integer         not null, primary key
+#  plate_id        :integer
+#  event_id        :integer
+#  name            :string(255)
+#  content         :text
+#  description     :text
+#  publish         :boolean         default(FALSE)
+#  start_time      :datetime
+#  end_time        :datetime
+#  default_edition :boolean         default(FALSE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+# Indexes
+#
+#  index_plate_editions_on_plate_id_and_event_id  (plate_id,event_id) UNIQUE
+#
+
 class PlateEdition < ActiveRecord::Base
   belongs_to :plate
   belongs_to :event

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :text
+#  publish     :boolean
+#  start_time  :datetime
+#  end_time    :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Event < ActiveRecord::Base
   has_many :plate_editions
   has_many :plates, :through => :plate_editions
