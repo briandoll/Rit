@@ -2,14 +2,16 @@
 <%= File.read(File.join(RAILS_ROOT, 'config/database-local.yml')) %>
 
 development:
-  adapter: mysql
-  database: rit
-  <<: *development-login
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 test:
-  adapter: mysql
-  database: rit_test
-  <<: *development-login
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: mysql
