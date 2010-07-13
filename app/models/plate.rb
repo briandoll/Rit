@@ -17,8 +17,7 @@
 
 class Plate < ActiveRecord::Base
   has_many :plate_editions, :dependent => :destroy
-  has_one :default_plate_edition, :class_name => "PlateEdition",
-    :conditions => "publish=1 AND default_edition=1"
+  has_one :default_plate_edition, :class_name => "PlateEdition", :conditions => {:publish => true, :default_edition => true}
   has_many :events, :through => :plate_editions
 
   validates_presence_of :layout_name, :plate_name

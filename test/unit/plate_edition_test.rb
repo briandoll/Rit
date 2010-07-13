@@ -20,7 +20,7 @@
 #  index_plate_editions_on_plate_id_and_event_id  (plate_id,event_id) UNIQUE
 #
 
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class PlateEditionTest < ActiveSupport::TestCase
   subject { Factory(:plate_edition) }
@@ -160,7 +160,7 @@ class PlateEditionTest < ActiveSupport::TestCase
                                   :end_time   => @default_end_time)
     end
     
-    fast_context "default_edition" do
+    context "default_edition" do
       should "return [beginning_of_time, default_start_time, default_end_time] when sent :effective_start_times" do
         # TODO - collapse these?
         assert_equal([Plate::BEGINNING_OF_TIME, @default_start_time, @default_end_time], 

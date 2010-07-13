@@ -15,7 +15,7 @@
 #  index_plates_on_layout_name_and_instance_name_and_plate_name  (layout_name,instance_name,plate_name) UNIQUE
 #
 
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class PlateTest < ActiveSupport::TestCase
   subject { Factory(:plate) }

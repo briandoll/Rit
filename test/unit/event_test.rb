@@ -12,7 +12,7 @@
 #  updated_at  :datetime
 #
 
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class EventTest < ActiveSupport::TestCase
   should_have_many :plate_editions

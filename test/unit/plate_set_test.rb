@@ -10,7 +10,7 @@
 #  updated_at  :datetime
 #
 
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class PlateSetTest < ActiveSupport::TestCase
   should_have_many :plate_set_plates
