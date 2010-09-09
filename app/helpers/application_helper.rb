@@ -1,8 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
-require File.join(RAILS_ROOT, '/config/rit_config')
+require File.join(Rails.root, '/config/rit_config')
 
 module ApplicationHelper
-  
   def show_admin_content?
     signed_in_as_admin?
   end
@@ -14,7 +13,7 @@ module ApplicationHelper
     html += f.label key.to_sym, label, :class => "infield #{type.to_s}"
     html += f.send type, key.to_sym, options
     html += '</div>'
-    html
+    raw html
   end
   
   def pretty_time(time)
