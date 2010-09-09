@@ -6,7 +6,7 @@
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
   :key         => '_rit_session',
-  :secret      => 'your-secret-key-here'
+  :secret      => 'eb85100a2cba63248371e493d7f96bf4'
 }
 
 # Use the database for sessions instead of the cookie-based default,

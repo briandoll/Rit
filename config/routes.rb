@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  Clearance::Routes.draw(map)
+  
   map.published_current 'published/:layout_name/:instance_name/:plate_name',
                         :controller => 'plates',
                         :action => 'published'

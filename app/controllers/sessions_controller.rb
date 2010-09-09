@@ -8,7 +8,7 @@ class SessionsController < Clearance::SessionsController
     else
       unless @user.active?
         flash[:notice] = "User has been deactivated.  Please contact administrator."
-        redirect_to(new_session_url)
+        redirect_to(sign_in_url)
       else
         if @user.email_confirmed?
           sign_in(@user)

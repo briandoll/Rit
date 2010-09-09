@@ -24,7 +24,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
   
-  attr_accessible :admin, :active
+  attr_accessible :email, :password, :password_confirmation, :admin, :active
   
   def admin?
     admin

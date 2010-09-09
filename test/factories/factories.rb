@@ -13,7 +13,7 @@ end
 Factory.define :published_plate_edition, :parent => :plate_edition do |pe|
   pe.name         "Current edition"
   pe.content      "<div><h1>Current content</h1></div>"
-  pe.start_time   Time.now
+  pe.start_time   Time.zone.now
   pe.publish      true
 end
 
@@ -42,7 +42,7 @@ end
 
 Factory.define :event do |e|
   e.name        "Big sale event"
-  e.start_time  Time.now
+  e.start_time  Time.zone.now
   e.end_time    2.weeks.from_now
 end
 
