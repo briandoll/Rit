@@ -14,7 +14,6 @@ class UsersController < Clearance::UsersController
       flash_notice_confirmation_email
       redirect_to users_url
     else
-      # p @user.errors
       render :template => 'users/new'
     end
   end
