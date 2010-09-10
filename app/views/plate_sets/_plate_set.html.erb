@@ -1,4 +1,4 @@
-<div class="action"><%= link_to_remote "Edit", :url => edit_plate_set_path(plate_set), :method => :get %></div>
+<div class="action"><%= link_to "Edit", edit_plate_set_path(plate_set), :remote => true %></div>
 <div class="name"><h2><%= link_to plate_set.name, plate_set_path(plate_set) %></h2></div>
 <div class="layout-name">Layout: <%= plate_set.layout_name %></div>
 <div class="description"><%= plate_set.description %></div>

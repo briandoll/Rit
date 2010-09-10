@@ -20,15 +20,19 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 class PlateTest < ActiveSupport::TestCase
   subject { Factory(:plate) }
 
-  should_have_many :plate_editions, :dependent => :destroy
-  should_have_one :default_plate_edition
-  should_have_many :events, :through => :plate_editions
+  should have_many(:plate_editions).dependent(:destroy)
+  should have_one :default_plate_edition
+  should have_many(:events).through(:plate_editions)
 
-  should_validate_presence_of :layout_name, :plate_name
-  should_validate_uniqueness_of :plate_name, :scoped_to => [:layout_name, :instance_name]
-  should_not_allow_values_for :layout_name, " ", "ü", "%", "/", "\\"
-  should_not_allow_values_for :instance_name, " ", "ü", "%", "/", "\\"
-  should_not_allow_values_for :plate_name, " ", "ü", "%", "/", "\\"
+  should validate_presence_of :layout_name
+  should validate_presence_of :plate_name
+  should validate_uniqueness_of(:plate_name).scoped_to(:layout_name, :instance_name)
+  
+  [" ", "ü", "%", "/", "\\"].each do |value|
+    should_not allow_value(value).for(:layout_name)
+    should_not allow_value(value).for(:instance_name)
+    should_not allow_value(value).for(:plate_name)
+  end
 
   should "allow values for layout_name" do
     @plate = Factory(:plate)

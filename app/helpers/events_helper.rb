@@ -14,10 +14,10 @@ module EventsHelper
   end
 
   def link_to_event_edit(event)
-    options = { :url => edit_event_url(event), :method => :get }
+    options = { :url => edit_event_url(event), :remote => true }
     if event.live?
       options[:confirm] = "This is a LIVE event.  Are you sure you want to edit?"
     end
-    link_to_remote("Edit", options)
+    link_to("Edit", options)
   end
 end

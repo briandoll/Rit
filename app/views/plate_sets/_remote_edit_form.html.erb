@@ -1,4 +1,4 @@
-<% remote_form_for plate_set, :index => plate_set.id, :html => { :class => 'item-form'} do |f| %>
-  <%- cancel = link_to_remote("Cancel", :url => show_row_plate_set_path(plate_set), :update => dom_id(plate_set), :method => :get) -%>
+<%= form_for plate_set, :remote => true, :index => plate_set.id, :html => { :class => 'item-form'} do |f| %>
+  <%- cancel = link_to("Cancel", show_row_plate_set_path(plate_set), :remote => true) -%> <%# TODO RAILS3: attempt to replace link_to_remote :update => dom_id(plate_set), :method => :get %>
   <%= render :partial => 'form_fields', :locals => { :f => f, :plate_set => plate_set, :button_text => 'Update', :cancel => cancel } %>
 <% end %>

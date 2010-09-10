@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rit</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>rit. <%= yield :page_title -%></title>
+  <%= stylesheet_link_tag %w(main smoothness/jquery-ui-1.7.2.custom), :media => "all" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<%= render :partial => 'layouts/header' -%>
+<% if signed_in? -%>
+  <%= render :partial => 'layouts/navbar' -%>
+<% end -%>
 
-<%= yield %>
+<div id="main-content">
+  <div id="flashes"><%= render :partial => 'layouts/flashes' -%></div>
+  <%= yield(:section_title) -%>
+  <%= yield(:content) || yield -%>
+</div>
 
+<%= javascript_include_tag :defaults, 'jquery.infieldlabel', :cache => true %>
+<%= yield :javascript -%>
 </body>
 </html>

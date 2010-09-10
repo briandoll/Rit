@@ -23,11 +23,11 @@ module PlateEditionsHelper
   end
 
   def link_to_plate_edition_edit(plate_edition, partial='plate_editions/remote_edit_form')
-    options = { :url => edit_plate_edition_url(plate_edition, :partial => partial), :method => :get }
+    options = { :url => edit_plate_edition_url(plate_edition, :partial => partial), :remote => true }
     if plate_edition.live?
       options[:confirm] = "This is a LIVE edition.  Are you sure you want to edit?"
     end
-    link_to_remote("Edit", options)
+    link_to("Edit", options)
   end
 
   def times_div_tag(event)

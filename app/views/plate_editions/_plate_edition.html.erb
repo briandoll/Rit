@@ -4,7 +4,7 @@
   <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
   
   <div class="action">
-    <%= link_to_remote "Copy", :url => new_plate_plate_edition_path(pe.plate.id, :copy_id => pe.id), :method => :get %> |
+    <%= link_to "Copy", new_plate_plate_edition_path(pe.plate.id, :copy_id => pe.id), :remote => true -%> |
     <%= link_to_plate_edition_edit(pe) %>
   </div>
   

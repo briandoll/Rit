@@ -25,12 +25,12 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 class PlateEditionTest < ActiveSupport::TestCase
   subject { Factory(:plate_edition) }
   
-  should_belong_to :plate
-  should_belong_to :event
+  should belong_to :plate
+  should belong_to :event
   
   # an edition must belong to a plate
-  should_validate_presence_of :plate
-  should_validate_presence_of :name
+  should validate_presence_of :plate
+  should validate_presence_of :name
   
   should "validate uniqueness of plate scoped to event if belongs to event" do
     @plate = Factory(:plate)
@@ -43,7 +43,7 @@ class PlateEditionTest < ActiveSupport::TestCase
     
     @pe_2.event = @event
     assert_equal(false, @pe_2.save)
-    assert_equal('is already part of this Event.  Remove the other Edition first.', @pe_2.errors.on('plate_id'))
+    assert_equal(['is already part of this Event.  Remove the other Edition first.'], @pe_2.errors[:plate_id])
   end
   
   fast_context "A new PlateEdition" do
@@ -70,28 +70,28 @@ class PlateEditionTest < ActiveSupport::TestCase
       @pe.publish = false
       @pe.default_edition = true
       assert_equal(false, @pe.save)
-      assert_equal("can't be set if not published", @pe.errors.on("default_edition"))
+      assert_equal(["can't be set if not published"], @pe.errors[:default_edition])
     end
     
     should "not have only an end_time" do
       @pe.start_time = nil
       @pe.end_time = 1.day.from_now
       assert_equal(false, @pe.save)
-      assert_equal("can't be set without start_time", @pe.errors.on("end_time"))
+      assert_equal(["can't be set without start_time"], @pe.errors[:end_time])
     end
     
     should "not have an end_time earlier than start_time" do
       @pe.start_time = 1.day.from_now
       @pe.end_time = Time.now
       assert_equal(false, @pe.save)
-      assert_equal("can't be earlier than start_time", @pe.errors.on("end_time"))
+      assert_equal(["can't be earlier than start_time"], @pe.errors[:end_time])
     end
     
     should "not be published without a start_time" do
       @pe.start_time = nil
       @pe.publish = true
       assert_equal(false, @pe.save)
-      assert_equal("can't be set without a start_time", @pe.errors.on("publish"))
+      assert_equal(["can't be set without a start_time"], @pe.errors[:publish])
     end
     
     context "that is currently live" do

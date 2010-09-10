@@ -1,6 +1,6 @@
 <div id="<%= dom_id(plate_edition) %>" class="item-row edition-row">
-  <% remote_form_for plate_edition, :index => plate_edition.id, :html => { :class => 'item-form'} do |f| %>
-    <%- cancel = link_to_remote("Cancel", :url => plate_edition_path(plate_edition), :method => :get) -%>
+  <%= form_for plate_edition, :remote => true, :index => plate_edition.id, :html => { :class => 'item-form'} do |f| %>
+    <%- cancel = link_to("Cancel", :url => plate_edition_path(plate_edition), :remote => true) -%>
 
     <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
     <%= render :partial => 'form_fields', :locals => { :f => f, :plate_edition => plate_edition, :button_text => 'Save', :cancel => cancel } %>

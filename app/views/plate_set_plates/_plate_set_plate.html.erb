@@ -1,3 +1,3 @@
-<div class="action"><%= link_to_remote "Edit", :url => edit_plate_set_plate_path(plate_set_plate), :method => :get %></div>
+<div class="action"><%= link_to "Edit", edit_plate_set_plate_path(plate_set_plate), :remote => true %></div>
 <div class="name"><h2><%= plate_set_plate.plate_name %></h2></div>
 <div class="description"><%= plate_set_plate.description %></div>

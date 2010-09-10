@@ -3,7 +3,7 @@
   <% klasses << 'hidden' %>
   <% plate_set_plate = PlateSetPlate.new %>
 <% end %>
-<% form_for plate_set_plate, :url => plate_set_path(plate_set), :html => { :class => klasses.join(' ') }, :index => "new_plate_set_plate" do |f| %>
+<%= form_for plate_set_plate, :url => plate_set_path(plate_set), :html => { :class => klasses.join(' ') }, :index => "new_plate_set_plate" do |f| %>
   <%= render :partial => 'plate_set_plates/form_fields',
              :locals  => { :plate_set_plate => plate_set_plate, :f => f, :button_text => 'Create', :cancel => nil } %>
 <% end %>

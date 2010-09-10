@@ -1,6 +1,6 @@
-<div class="action"><%= link_to_remote "Edit", :url => edit_plate_url(plate), :method => :get %></div>
+<div class="action"><%= link_to "Edit", edit_plate_url(plate), :remote => true %></div>
 <ul class="plate-name-parts">
-  <li><h2><%= link_to plate.layout_name, plate_path(plate) %></h2></li>
+  <li><h2><%= link_to plate.layout_name, "#RAILS3" %></h2></li> <%# TODO RAILS3: fix route not found plate_path(plate) %>
   <li><h2><%= plate.instance_name %></h2></li>
   <li><h2><%= plate.plate_name %></h2></li>
 </ul>

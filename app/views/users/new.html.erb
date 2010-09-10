@@ -1,6 +1,6 @@
 <div class="header-form">
   <div class="content-action">Create user</div>
-    <% form_for @user, :html => { :class => 'item-form' } do |form| %>
+    <%= form_for @user, :html => { :class => 'item-form' } do |form| %>
       <%= render :partial => '/users/form', :object => form %>
       <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
     <% end %>

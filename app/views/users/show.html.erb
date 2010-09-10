@@ -1,7 +1,7 @@
 <%- content_for :page_title, "User - #{@user.email}" -%>
 <div class="header-form">
   <div class="content-action">Edit user</div>
-    <% form_for @user, :html => { :class => 'item-form' } do |form| %>
+    <%= form_for @user, :html => { :class => 'item-form' } do |form| %>
       <%= render :partial => '/users/form', :object => form %>
       <%= form.submit 'Update', :disable_with => 'Please wait...' %>
     <% end %>

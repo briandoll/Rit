@@ -15,10 +15,12 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class EventTest < ActiveSupport::TestCase
-  should_have_many :plate_editions
-  should_have_many :plates, :through => :plate_editions
+  should have_many :plate_editions
+  should have_many(:plates).through(:plate_editions)
 
-  should_validate_presence_of :name, :start_time, :end_time
+  should validate_presence_of :name
+  should validate_presence_of :start_time
+  should validate_presence_of :end_time
 
   context "A new Event" do
     setup do
@@ -39,7 +41,7 @@ class EventTest < ActiveSupport::TestCase
       @event.start_time = 1.day.from_now
       @event.end_time = Time.now
       assert_equal(false, @event.save)
-      assert_equal("can't be earlier than start_time", @event.errors.on('end_time'))
+      assert_equal(["can't be earlier than start_time"], @event.errors[:end_time])
     end
 
     context "that is scheduled to run now" do
