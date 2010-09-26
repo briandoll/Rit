@@ -1,0 +1,13 @@
+require 'autotest/fsevent'
+require 'autotest/growl'
+
+# Autotest::Growl::clear_terminal = false
+# Autotest::Growl::sticky_failure_notifications = true
+# Autotest::Growl::show_modified_files = true
+
+Autotest.add_hook :initialize do |autotest|
+  %w{.git .DS_Store vendor}.each do |exception|
+    autotest.add_exception(exception)
+  end
+  false
+end

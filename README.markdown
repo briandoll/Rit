@@ -30,6 +30,19 @@ See the [Rit wiki](http://wiki.github.com/briandoll/Rit/) for the latest informa
 
 Ideas?  Need help?  Discuss [here](http://getsatisfaction.com/rit).
 
+Development
+-----------
+
+### RVM and Best Practices 
+Developed using RVM Ruby 1.8.7 and Gemset
+
+    $ rvm use 1.8.7
+    $ rvm gemset create rit
+    $ rvm use 1.8.7@rit
+
+### Automated Workflow
+See .terminitor/README.markdown and .terminitor/rit.yml.sample for more information.
+
 Terminology
 -----------
 ### Plate

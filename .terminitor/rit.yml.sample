@@ -1,0 +1,16 @@
+# Rit Rails Project
+---
+- tab1: # leave an empty terminal tab
+- tab2:
+  - cd path/to/code
+  - rvm use 1.8.7@rit
+  - autotest --fast-start --no-full-after-failed --verbose -r .autotest
+- tab3:
+  - cd path/to/code
+  - rvm use 1.8.7@rit
+  - ./script/server
+- tab4:
+  - cd path/to/code
+  - rvm use 1.8.7@rit
+  - git status
+  - mate .
