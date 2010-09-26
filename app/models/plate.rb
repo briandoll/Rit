@@ -66,7 +66,7 @@ class Plate < ActiveRecord::Base
     # TODO - Ugly solution to loading the class for Marshal in development mode.  Marshal!
     PlateEdition
     Event
-    
+
     if starting_from == :now
       starting_from = Time.zone.now
       Rails.cache.fetch(edition_start_times_key, :expires_in => 1.hour) do
@@ -87,7 +87,7 @@ class Plate < ActiveRecord::Base
   end
 
   private
-  
+
   def clear_cache
     Rails.cache.delete('Plate.all')
   end

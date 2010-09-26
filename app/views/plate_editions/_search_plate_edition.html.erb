@@ -2,7 +2,7 @@
 
 <div id="<%= dom_id(plate_edition) %>" class="item-row edition-row">
   <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
-  
+
   <div class="action">
     <%= link_to_plate_edition_edit(pe, 'plate_editions/search_remote_edit_form')  %>
   </div>

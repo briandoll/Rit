@@ -1,7 +1,6 @@
 rit. User Stories and Tests
 ===========================
 
-
 As a content creator, I want to
 - log in to create and edit content
 description
@@ -15,9 +14,6 @@ sad path:
 * when a user forgets their password they can reset it by using the forgot password feature
 * when a user attempts to log into a non-approved account, they are not able to log in
 
-
-
-
 - create a new edition of a plate
 description
 content creators can create a new edition of a plate
@@ -29,9 +25,6 @@ happy path:
 sad path:
 * cannot save without familiar name
 
-
-
-
 - edit an existing plate edition
 Content creators can edit the content, familiar name, description, status, start date, end date of a plate
 
@@ -40,9 +33,6 @@ happy path:
 
 sad path
 * cannot save if name is blank
-
-
-
 
 - set a fallback edition for a plate
 Content creators can set a fallback edition for a plate to be used when there are no scheduled editions.  The fallback setting only comes into play if no active edition can be found.  If the fallback edition has a schedule, the schedule will be considered first.
@@ -60,11 +50,6 @@ sad path:
 notes:
 Upon creation of a new edition, it will, naturally, not be publishable.  It is up to the layout on the integrating app to handle this gracefully.
 
-
-
-
-
-
 - create a new plates from a plate set
 Content creators can create new plates for a new instance of a layout.
 
@@ -74,9 +59,6 @@ happy path:
 sad path:
 - cannot create without an instance name
 
-
-
-
 - create new events
 Content creators can create new events.
 
@@ -85,9 +67,6 @@ happy path:
 
 sad path:
 * cannot save without name, start date, end date
-
-
-
 
 - add a plate edition to an event
 Content creators can add plate editions to event to group their scheduling.  The event overrides start and end dates for that particular plate edition.
@@ -102,9 +81,6 @@ sad path:
 questions:
 Can a plate edition belong to multiple events?  No.
 
-
-
-
 - rename all editions in an event
 Content creators can rename all the editions that are part of a single event to one name.
 
@@ -112,10 +88,6 @@ happy path:
 * user can rename all plate editions
 
 sad path:
-
-
-
-
 
 - mark an edition as publishable
 Content creators can flag which editions are ready to publish.
@@ -126,9 +98,6 @@ happy path:
 sad path:
 * cannot publish edition if there is no start date
 
-
-
-
 - mark an edition as not publishable
 Content creators can mark an edition as not publishable.  If the edition is currently being published, the edition is taken down.  This is the initial state of any new edition.
 
@@ -138,9 +107,6 @@ happy path:
 
 sad path:
 
-
-
-
 - mark all editions in an event as publishable
 Content creators can flag all editions in an event as ready to publish.
 
@@ -149,9 +115,6 @@ happy path:
 
 sad path:
 * cannot mark events if event end_date is in the past
-
-
-
 
 - mark an event as publishable
 Content creators can flag which events are ready to publish.
@@ -163,9 +126,6 @@ sad path:
 * cannot publish event if end date is in the past
 * cannot publish event if any editions are not marked as publishable
 
-
-
-
 - mark an event as not publishable
 Content creators can mark an event as not publishable.  If the event is currently being published, the event is taken down.  This is the initial state of any new event.
 
@@ -175,8 +135,6 @@ happy path:
 
 sad path:
 
-
-
 - be alerted when there is no fallback edition for a plate
 Content creators should be notified when there is no publishable fallback edition
 
@@ -185,9 +143,6 @@ happy path:
 
 sad path:
 
-
-
-
 - see all plates that have no publishable fallback edition
 Content creators can see a list of all plates without fallbacks that are publishable
 
@@ -195,9 +150,6 @@ happy path:
 * user sees a list of plates without publishable fallbacks
 
 sad path:
-
-
-
 
 - schedule a plate edition to activate and deactivate by hour
 Content creators can schedule plate editions to activate.  They can also schedule deactivation, but it is not required.
@@ -211,9 +163,6 @@ sad path:
 
 editions don't require end_dates
 
-
-
-
 - schedule an event to activate and deactivate by hour
 Content creators can schedule plate editions to activate and deactivate.  Event scheduling overrides any edition scheduling.
 
@@ -226,17 +175,11 @@ happy path:
 sad path:
 * cannot save if end_date is before start_date
 
-
-
-
 - clearly see which plate edition is active on any given date
 happy path:
 * A timeline for a plate showing all changes in a given date range
 
 sad path:
-
-
-
 
 - clearly see which events are active on any given date
 happy path:
@@ -244,17 +187,11 @@ happy path:
 
 sad path:
 
-
-
-
 - clearly see any upcoming scheduled activations that are not marked as publishable
 happy path:
 * upcoming schedules editions that are not publishable are highlighted
 
 sad path:
-
-
-
 
 - be alerted if the edition I'm editing is currently live
 Content creators should be aware that the changes they are making will be live immediately.
@@ -267,9 +204,6 @@ sad path:
 notes:
 Fo realz?
 
-
-
-
 - be alerted if the event I'm attaching an edition to is currently live
 Content creators should be aware that the changes they are making MAY be go live immediately.  It is difficult to know definitively without knowing which event they are attaching to.  Or is it?
 
@@ -281,9 +215,6 @@ When we load the event list, we can know whether this plate edition will go live
 
 Fo realz?
 
-
-
-
 - preview the entire site by date
 Content creators can browse the app for any given date in the future, taking into account all scheduling.
 
@@ -294,9 +225,6 @@ sad path:
 * site does not show because app is not properly integrated with rit. to receive date settings
 * cannot preview site for a date in the past
 
-
-
-
 - search plate edition content
 Content creators can search the contents of all plate editions for a string
 
@@ -306,9 +234,6 @@ happy path:
 sad path:
 * cannot search with blank string
 * string cannot be found in any of the content
-
-
-
 
 - upload media so that it is available on the live site
 Content creators can upload media (images, sounds, movies) through a Media Browser so that it's available on the live site.  In our case, this will be uploaded to the CDN (through the assets server).  Content creators may then reference the media by URL in their editions.
@@ -321,9 +246,6 @@ sad path:
 * cannot upload if the media is too large
 * cannot upload if the filename already exists
 
-
-
-
 (reject) preview all pages affected by an event
 Content creators should be able to preview all pages affected by an event.  If there is an conflicting edition or event that occurs over the lifetime of the event, the user will be notified.  The preview of the page will show the actual state of the site on any given day, including conflicts.  This is actually duplicate functionality as preview site by date
 
@@ -333,22 +255,11 @@ happy path:
 reasons for rejection:
 The API does not designate a way for the app to call for a specific plate edition.  The app may only call out for a plate name and the date, which returns the edition that will show on that date, according to all schedules and events.
 
-
-
-
 (reject) preview a page by date
 Content creators can preview the page that is associated with the plate they are currently working on.
 
 reasons for rejection:
 rit. does not have know what route a plate may belong to.  Also, with the one to many relationship of plates to layouts, which would we show.  This is being removed to keep rit. more focused.
-
-
-
-
-
-
-
-
 
 As an administrator, I want to...
 - create a new user
@@ -361,9 +272,6 @@ sad path:
 * cannot create user without valid email
 * cannot create user with a duplicate email
 
-
-
-
 - suspend a user
 Admins can suspended existing users from logging into the system.
 
@@ -372,10 +280,6 @@ happy path:
 * any user currently logged in is logged out (on their next page load)
 
 sad path:
-
-
-
-
 
 - edit a user
 Admins can edit a user's email, name and admin flag.
@@ -387,9 +291,6 @@ sad path:
 * cannot update without a valid email
 * cannot update with a duplicate email
 
-
-
-
 - create a new plate
 Administrators can create a new plate.  A new plate has no editions.
 
@@ -399,9 +300,6 @@ happy path:
 sad path:
 * cannot save without description, layout_name, plate_name
 
-
-
-
 - create a new plate set
 Admins can create a new plate set for users to create new plates for a new layout instance
 
@@ -410,6 +308,4 @@ happy path:
 
 sad path:
 * cannot save without name, layout_name, plate_names
-
-
 

@@ -5,7 +5,6 @@ rit.
 
 rit. is a standalone web application that allows users to edit and schedule content.  Content is served up to a consuming application as a web service.
 
-
 Design Goals
 ------------
  * CMSes suck.  We don't want our application to live inside a CMS.
@@ -33,7 +32,7 @@ Ideas?  Need help?  Discuss [here](http://getsatisfaction.com/rit).
 Development
 -----------
 
-### RVM and Best Practices 
+### RVM and Best Practices
 Developed using RVM Ruby 1.8.7 and Gemset
 
     $ rvm use 1.8.7
@@ -75,20 +74,18 @@ A *Plate Set* is a template for generating a group of related *Plates*.  For exa
 ### Consuming App
 The application that makes web calls out to rit. for content.
 
-
 Scheduling
 ----------
 
 ### Conflicts
-When there are scheduling conflicts for multiple editions of the same plate, the *start time* is used to determine which plate gets published.  The event latest start time takes priority.  
+When there are scheduling conflicts for multiple editions of the same plate, the *start time* is used to determine which plate gets published.  The event latest start time takes priority.
 
 If start multiple editions have the same start time, the most recently modified edition takes priority
-
 
 ### Example
                     1     2                  3      4
     Timeline:  <----^-----^------------------^------^---->
-    
+
     edition 1       |-------------------------------|
     edition 2             |------------------|
 
@@ -99,11 +96,10 @@ Edition start times:
  * time 3: back to edition 1
  * time 4: fallback edition
 
-
 ### Example
                     1     2                  3      4
     Timeline:  <----^-----^------------------^------^---->
-    
+
     edition 1       |------------------------|
     edition 2             |-------------------------|
 
@@ -114,11 +110,10 @@ Edition start times:
 * time 3: edition 2 continues
 * time 4: fallback edition
 
-
 ### Example
                     1     2      3      4    5      6
     Timeline:  <----^-----^------^------^----^------^---->
-    
+
     edition 1       |------------|
     edition 2             |------------------|
     edition 3                           |-----------|
@@ -131,12 +126,11 @@ Edition start times:
  * time 4: edition 3
  * time 5: edition 3 continues
  * time 6: fallback edition
- 
- 
+
 ### Example
                     1     2      3      4    5      6
     Timeline:  <----^-----^------^------^----^------^---->
-    
+
     edition 1       |-------------------------------|
     edition 2             |-------------|
     edition 3                     |----------|
@@ -149,8 +143,7 @@ Edition start times:
  * time 4: edition 3 continues
  * time 5: back to edition 1
  * time 6: fallback edition
- 
- 
+
 Publishing
 ----------
 
@@ -158,7 +151,6 @@ The consuming app can retrieve the current content for a plate from the followin
 
     http://rit.app/published/<layout name>/<instance name>/<plate name>
     http://rit.app/published/<layout name>/<plate name>
-
 
 The consuming app can retrieve content on a specific date with:
 

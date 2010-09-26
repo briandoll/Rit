@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
@@ -15,26 +15,23 @@ if Rails.env.eql?('development')
     :plate_name => "main-content",
     :description => "A *Plate* is a class of content. A plate is identified by the combination of it's *Layout Name*, *Instance Name* and *Plate Name*. The names are used to classify and organize plates."
   )
-  
+
   # TODO: seeds.rb add examples of Plate and instance names
-  
-  
+
   #
   # Events
   #
   # TODO: seeds.rb add examples of various Events
-  
-  
+
   #
   # Users
   #
   admin = User.create!(:email => "admin@example.com", :password => "admin", :admin => true)
   admin.confirm_email!
-  
+
   user = User.create!(:email => "user@example.com", :password => "user")
   user.confirm_email!
-  
-  
+
   #
   # Plate Sets
   #

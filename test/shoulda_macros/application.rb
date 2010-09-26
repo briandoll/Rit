@@ -1,5 +1,5 @@
 class Test::Unit::TestCase
-  
+
   def self.should_publish(description, &block)
     context "should publish #{description}" do
       setup do
@@ -16,5 +16,5 @@ class Test::Unit::TestCase
       end
     end
   end
-  
+
 end

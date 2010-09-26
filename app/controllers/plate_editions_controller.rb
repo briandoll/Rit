@@ -83,7 +83,7 @@ class PlateEditionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def search
     unless params[:q].blank?
       @query = params[:q]
@@ -93,8 +93,7 @@ class PlateEditionsController < ApplicationController
     end
   end
 
-
   private
   include ParsesPlateEditionParameters
-  
+
 end

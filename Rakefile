@@ -19,7 +19,7 @@ begin
     config.flog     = { :dirs_to_flog => ['app', 'lib']  }
     config.reek     = { :dirs_to_reek => ['app', 'lib']  }
     config.roodi    = { :dirs_to_roodi => ['app', 'lib'] }
-    config.saikuro  = { :output_directory => 'scratch_directory/saikuro', 
+    config.saikuro  = { :output_directory => 'scratch_directory/saikuro',
       :input_directory => ['app', 'lib'],
       :cyclo => "",
       :filter_cyclo => "0",

@@ -1,4 +1,4 @@
-class SessionsController < Clearance::SessionsController  
+class SessionsController < Clearance::SessionsController
   def create
     @user = ::User.authenticate(params[:session][:email],
                                 params[:session][:password])

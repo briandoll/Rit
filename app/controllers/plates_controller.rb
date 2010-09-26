@@ -15,8 +15,8 @@ class PlatesController < ApplicationController
       @filtering = ''
     end
     @plates = Plate.find(:all, :include => [ :plate_editions, :default_plate_edition ],
-                         :conditions => [conditions, *args]).sort_by { |plate| "#{plate.layout_name}-#{plate.instance_name}-#{plate.plate_name}" } 
-    
+                         :conditions => [conditions, *args]).sort_by { |plate| "#{plate.layout_name}-#{plate.instance_name}-#{plate.plate_name}" }
+
   end
 
   def show
@@ -32,7 +32,7 @@ class PlatesController < ApplicationController
       @sorted_editions = @plate.plate_editions.sort_by { |pe| pe.start_time.nil? ? Plate::BEGINNING_OF_TIME : pe.start_time }
     end
   end
-  
+
   def show_row
     @plate = Plate.find(params[:id])
     render :partial => 'plate', :object => @plate
@@ -49,7 +49,7 @@ class PlatesController < ApplicationController
       render :action => 'index'
     end
   end
-  
+
   def create_plate_edition
     @plate = Plate.find(params[:id])
     @plate_edition = PlateEdition.new(parse_params)
@@ -68,7 +68,7 @@ class PlatesController < ApplicationController
       end
     end
   end
-  
+
   # TODO - check for nil plate
   def edit
     @plate = Plate.find(params[:id])
@@ -155,7 +155,7 @@ class PlatesController < ApplicationController
   def published_cache_key(plate)
     "plate/#{plate.id}/published"
   end
-  
+
   def append_filter(conditions, args, field_name, value)
     unless value.nil? or value == PlatesHelper::FILTER_ALL
       conditions << "#{field_name} = ?"

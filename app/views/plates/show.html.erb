@@ -3,7 +3,7 @@
 <h5><%= @plate.description %></h5>
 <div class="header-form">
   <div class="content-action toggle"><a href="#" class="with-icon plus-icon">Create a new edition</a></div>
-  <%= render :partial => 'plate_editions/new_form', :locals => { :plate_edition => @plate_edition, :plate => @plate } %> 
+  <%= render :partial => 'plate_editions/new_form', :locals => { :plate_edition => @plate_edition, :plate => @plate } %>
 </div>
 <%= render :partial => 'shared/main_content_notice', :locals => { :notices => @notices } %>
 

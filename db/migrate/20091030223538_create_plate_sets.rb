@@ -4,7 +4,7 @@ class CreatePlateSets < ActiveRecord::Migration
       t.string      "name"
       t.string      "description"
       t.string      "layout_name"
-      
+
       t.timestamps
     end
   end

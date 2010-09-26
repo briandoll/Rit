@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
     def all_cached
       Rails.cache.fetch('Event.all') { all }
     end
-    
+
     def all_preview_json
       events = {}
       all_cached.each do |e|
@@ -49,7 +49,6 @@ class Event < ActiveRecord::Base
     now = Time.zone.now
     (now > start_time and now < end_time) and publish?
   end
-
 
   private
 

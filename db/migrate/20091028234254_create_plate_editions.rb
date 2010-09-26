@@ -10,7 +10,7 @@ class CreatePlateEditions < ActiveRecord::Migration
       t.datetime  "start_time"
       t.datetime  "end_time"
       t.boolean   "default"
-      
+
       t.timestamps
     end
   end

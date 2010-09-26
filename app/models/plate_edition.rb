@@ -125,7 +125,6 @@ class PlateEdition < ActiveRecord::Base
     plate.edition_now == self
   end
 
-
   private
 
   def default_edition_cannot_be_set_on_unpublished
@@ -143,7 +142,7 @@ class PlateEdition < ActiveRecord::Base
   end
 
   def publish_cannot_be_set_without_start_time
-    # Can't publish without a start time, unless it's part of an event (start_time is added in the 
+    # Can't publish without a start time, unless it's part of an event (start_time is added in the
     # after_save so there's no need to validate it here)
     if publish and start_time.nil? and event_id.nil?
       errors.add('publish', "can't be set without a start_time")

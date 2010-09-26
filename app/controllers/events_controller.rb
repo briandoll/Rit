@@ -13,7 +13,7 @@ class EventsController < ApplicationController
       @sorted_plate_editions = @event.plate_editions.sort_by { |pe| pe.start_time }
     end
   end
-  
+
   def show_row
     @event = Event.find(params[:id])
     render :partial => 'events/event', :object => @event
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    
+
     respond_to do |format|
       format.html { redirect_to events_url }
       format.js
@@ -65,7 +65,6 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
 
   private
 

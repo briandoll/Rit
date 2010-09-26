@@ -169,7 +169,7 @@ module Clearance
       should "validate #{attribute}_confirmation is different than #{attribute}" do
         model = Factory.build(factory, bad_confirmation_options(attribute))
         model.save
-        assert_confirmation_error(model, attribute, 
+        assert_confirmation_error(model, attribute,
           "#{attribute}_confirmation cannot be different than #{attribute}")
       end
     end

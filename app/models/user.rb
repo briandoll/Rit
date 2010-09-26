@@ -23,13 +23,13 @@
 
 class User < ActiveRecord::Base
   include Clearance::User
-  
+
   attr_accessible :email, :password, :password_confirmation, :admin, :active
-  
+
   def admin?
     admin
   end
-  
+
   def active?
     active
   end

@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class PlateSetsControllerTest < ActionController::TestCase
-  
+
   should_route :post, '/plate_sets', :controller => :plate_sets, :action => :create
   should_route :post, '/plate_sets/1', :controller => :plate_sets, :action => :create_plate, :id => '1'
-  
+
   should_require_user_access_on('GET #index') { get :index }
   should_require_user_access_on('GET #show') { get :show, :id => Factory(:plate_set).id }
   should_require_user_access_on('GET #show_row') { get :show_row, :id => Factory(:plate_set).id }
@@ -41,7 +41,7 @@ class PlateSetsControllerTest < ActionController::TestCase
       should_render_template :show
       should_not_set_the_flash
     end
-    
+
     fast_context 'on GET to #show_row' do
       setup { get :show_row, :id => @plate_set.id }
       should_render_template :plate_set

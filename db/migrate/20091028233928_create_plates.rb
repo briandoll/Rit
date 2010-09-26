@@ -5,7 +5,7 @@ class CreatePlates < ActiveRecord::Migration
       t.string  "instance_name"
       t.string  "plate_name"
       t.text    "description"
-      
+
       t.timestamps
     end
   end

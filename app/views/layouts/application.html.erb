@@ -13,7 +13,7 @@
   <% if signed_in? %>
     <%= render :partial => 'layouts/navbar' -%>
   <% end %>
-  
+
   <div id="main-content">
     <div id="flashes"><%= render :partial => 'layouts/flashes' %></div>
     <%= yield(:section_title) %>

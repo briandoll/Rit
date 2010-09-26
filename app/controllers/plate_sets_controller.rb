@@ -13,7 +13,7 @@ class PlateSetsController < ApplicationController
       redirect_to plates_url
     end
   end
-  
+
   # xhr
   def show_row
     @plate_set = PlateSet.find(params[:id])
@@ -85,7 +85,6 @@ class PlateSetsController < ApplicationController
       end
     end
   end
-
 
   def generate_plates
     @plate_set = PlateSet.find(params[:id])

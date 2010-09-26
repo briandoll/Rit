@@ -134,7 +134,7 @@ class PlatesControllerTest < ActionController::TestCase
       should_assign_to :plate_edition
       should_redirect_to("the plate show") { plate_url(@plate) }
     end
-    
+
     fast_context 'on POST to :create_plate_edition with invalid attributes' do
       setup do
         @plate = Factory(:plate)
@@ -208,7 +208,6 @@ class PlatesControllerTest < ActionController::TestCase
       should_not_set_the_flash
     end
   end
-
 
   #
   # PUBLISHING

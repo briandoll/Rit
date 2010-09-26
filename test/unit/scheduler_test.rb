@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class MockAppointment
   attr_accessor :start_time, :end_time
-  
+
   def initialize(opts={})
     @start_time = opts.fetch(:start_time, nil)
     @end_time = opts.fetch(:end_time, nil)
@@ -60,7 +60,6 @@ class SchedulerTest < ActiveSupport::TestCase
     end
   end
 
-
   #
   # Conflicting Tests
   #
@@ -71,7 +70,6 @@ class SchedulerTest < ActiveSupport::TestCase
       @default_appointment = MockAppointment.new(:start_time => @default_start_time,
                                                  :end_time   => @default_end_time)
     end
-
 
     # Timeline:
     #
@@ -119,7 +117,6 @@ class SchedulerTest < ActiveSupport::TestCase
         end
       end
 
-
       # Timeline:
       #
       # <=================================================>
@@ -165,7 +162,6 @@ class SchedulerTest < ActiveSupport::TestCase
 
       end
 
-
       # Timeline:
       #
       # <=================================================>
@@ -201,7 +197,6 @@ class SchedulerTest < ActiveSupport::TestCase
         end
       end
     end
-
 
     # Timeline:
     #

@@ -7,7 +7,7 @@ class SessionsControllerTest < ActionController::TestCase
       post :create, :session => { :email    => @user.email,
                                   :password => @user.password }
     end
-    
+
     should_deny_access(:flash => /deactivated/i)
   end
 end

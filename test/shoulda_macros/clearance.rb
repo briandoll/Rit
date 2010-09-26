@@ -1,8 +1,8 @@
 # http://github.com/jerry/clearance_admins
 
-module Clearance 
+module Clearance
   module Shoulda
-    
+
     def should_send_the_confirmation_email_to(description, &block)
       should "send the confirmation email to #{description}" do
         expected_to = instance_eval(&block)
@@ -11,7 +11,7 @@ module Clearance
         end
       end
     end
-    
+
     def should_require_admin_access_on(description, &block)
       context " #{description}" do
         setup do
@@ -22,7 +22,7 @@ module Clearance
         should_deny_access(:flash => /please login as an administrator/i)
       end
     end
-    
+
     def should_require_user_access_on(description, &block)
       context " #{description}" do
         setup do
@@ -33,8 +33,7 @@ module Clearance
     end
   end
 end
- 
- 
+
 class Test::Unit::TestCase
   include Clearance::Shoulda::Helpers
 end

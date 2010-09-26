@@ -60,7 +60,6 @@ class PlateTest < ActiveSupport::TestCase
     end
   end
 
-
   context "A Plate with many editions and a default plate edition" do
     setup do
       @plate = Factory(:plate)
@@ -80,7 +79,6 @@ class PlateTest < ActiveSupport::TestCase
       assert_equal(@new_edition, @plate.default_plate_edition)
     end
   end
-
 
   context "A newly created Plate" do
     setup do
@@ -231,29 +229,27 @@ class PlateTest < ActiveSupport::TestCase
 
   end
 
-
   context "A Plate with a published edition with an end date, with no fallback edition specified" do
     setup do
       @plate_edition = Factory(:published_plate_edition, :end_time => (Time.now))
       @plate = @plate_edition.plate
       @the_crazy_future = (Time.now + 2.weeks)
     end
-    
+
     should "return a nil edition for dates beyond scheduled edition end dates" do
       assert_nothing_raised{ @plate.edition_on(@the_crazy_future) }
       assert_equal @plate.edition_on(@the_crazy_future), nil
     end
-    
+
     should "raise an IndexError when attempting to get the current end time" do
       # skip("see FIXME KASIMA - failing test in master") - wtf #skip undefined?
       raise MiniTest::Skip, "see FIXME KASIMA - failing test in master", "PlateTest"
-      assert_raise IndexError do 
+      assert_raise IndexError do
         # FIXME KASIMA: not sure I understand the test and expected behavior
         # puts @plate_edition.active_times.find { |times| @the_crazy_future >= times[0] and (times[1].nil? or at_time < times[1]) }
         @plate_edition.current_end_time(@the_crazy_future) end
     end
   end
-
 
   context "A Plate with a default plate edition, an unpublished edition," do
     setup do
@@ -528,7 +524,6 @@ class PlateTest < ActiveSupport::TestCase
         assert_equal(@valid_edition, @plate.edition_now)
       end
     end
-
 
     context "and no currently valid editions" do
       setup do

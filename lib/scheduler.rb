@@ -31,7 +31,6 @@ class Scheduler
       @scheduled_times_hash
     end
 
-
     private
 
     # Schedules the current edition into the times_hash at start time and continues to all subsequent

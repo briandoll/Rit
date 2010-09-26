@@ -2,22 +2,22 @@
 
 <div id="<%= dom_id(plate_edition) %>" class="item-row edition-row">
   <%= edition_update_notice_div(plate_edition, @update_notice) if defined?(@update_notice) %>
-  
+
   <div class="action">
     <%= link_to_remote "Copy", :url => new_plate_plate_edition_path(pe.plate.id, :copy_id => pe.id), :method => :get %> |
     <%= link_to_plate_edition_edit(pe) %>
   </div>
-  
+
   <div class="toggle <%= plate_edition_klasses(pe) %>">
     <h2><a href="#" class="<%= pe.default_edition ? 'asterisk-icon' : '' %>"><%= pe.name %></a></h2>
   </div>
-  
+
   <%= times_div_tag(plate_edition.event) %>
     <%= link_to(plate_edition.event.name + ': ', event_path(plate_edition.event)) unless plate_edition.event.nil? %>
     <%= pretty_time(pe.start_time) %> - <%= pretty_time(pe.end_time) %>
   </div>
-  
+
   <div class="description"><%= pe.description %></div>
-  
+
   <div class="content toggleable<%= " hidden" unless defined?(show) %>"><%= h pe.content %></div>
 </div>

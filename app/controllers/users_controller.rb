@@ -2,11 +2,11 @@ class UsersController < Clearance::UsersController
   # We have different functionality than the default Clearance controller so we skip :redirect_to_root
   skip_before_filter :redirect_to_root
   before_filter :authenticate_admin
-  
+
   def index
     @users = User.find(:all)
   end
-  
+
   def create
     @user = ::User.new params[:user]
     if @user.save
@@ -17,7 +17,7 @@ class UsersController < Clearance::UsersController
       render :template => 'users/new'
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
     if @user.nil?
@@ -25,7 +25,7 @@ class UsersController < Clearance::UsersController
       redirect_to users_url
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     unless @user.nil?
@@ -49,9 +49,9 @@ class UsersController < Clearance::UsersController
       redirect_to users_url
     end
   end
-  
+
   private
-  
+
   def flash_notice_confirmation_email
     flash[:notice] = "The user will receive an email within the next few minutes.  " <<
       "It contains instructions for confirming their account."
