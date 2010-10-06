@@ -12,6 +12,7 @@ if Rails.env.eql?('development')
   #
   plate = Plate.create(
     :layout_name => "plated-layout",
+    :instance_name => "",
     :plate_name => "main-content",
     :description => "A *Plate* is a class of content. A plate is identified by the combination of it's *Layout Name*, *Instance Name* and *Plate Name*. The names are used to classify and organize plates."
   )

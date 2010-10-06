@@ -27,7 +27,7 @@ class PlateTest < ActiveSupport::TestCase
   should_validate_presence_of :layout_name, :plate_name
   should_validate_uniqueness_of :plate_name, :scoped_to => [:layout_name, :instance_name]
   should_not_allow_values_for :layout_name, " ", "ü", "%", "/", "\\"
-  should_not_allow_values_for :instance_name, " ", "ü", "%", "/", "\\"
+  should_not_allow_values_for :instance_name, " ", "ü", "%", "/", "\\", nil
   should_not_allow_values_for :plate_name, " ", "ü", "%", "/", "\\"
 
   should "allow values for layout_name" do

@@ -21,10 +21,10 @@ class Plate < ActiveRecord::Base
   has_many :events, :through => :plate_editions
 
   validates_presence_of :layout_name, :plate_name
+  # don't allow nil in instance_name
+  validates_presence_of :instance_name, :unless => Proc.new { |p| p.instance_name == '' }
   validates_uniqueness_of :plate_name, :scope => [:layout_name, :instance_name]
-  validates_format_of :layout_name, :with => /^[a-zA-Z0-9\-_.]*$/
-  validates_format_of :instance_name, :with => /^[a-zA-Z0-9\-_.]*$/
-  validates_format_of :plate_name, :with => /^[a-zA-Z0-9\-_.]*$/
+  validates_format_of :layout_name, :instance_name, :plate_name, :with => /^[a-zA-Z0-9\-_.]*$/
 
   after_save :clear_cache
 
