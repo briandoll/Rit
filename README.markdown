@@ -39,9 +39,6 @@ Developed using RVM Ruby 1.8.7 and Gemset
     $ rvm gemset create rit
     $ rvm use 1.8.7@rit
 
-### Automated Workflow
-See .terminitor/README.markdown and .terminitor/rit.yml.sample for more information.
-
 Terminology
 -----------
 ### Plate
