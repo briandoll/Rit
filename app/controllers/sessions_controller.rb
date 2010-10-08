@@ -4,7 +4,7 @@ class SessionsController < Clearance::SessionsController
                                 params[:session][:password])
     if @user.nil?
       flash_failure_after_create
-      render :template => 'sessions/new', :status => :unauthorized
+      render :template => 'sessions/new', :status => :unauthorized, :layout => "sessions"
     else
       unless @user.active?
         flash[:notice] = "User has been deactivated.  Please contact administrator."

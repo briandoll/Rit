@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
 
-  should_route :get, "/sessions", :controller => "sessions", :action => "create"
+  should_route :post, "/session", :controller => "sessions", :action => "create"
 
   context 'on POST to #create with inactive user' do
     setup do
