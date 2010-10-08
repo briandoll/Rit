@@ -2,6 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
+  should_route :get, "/users", :controller => "users", :action => "index"
+
   fast_context "An admin user" do
     setup do
       @admin = Factory(:admin_user)

@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resource :session, :controller => 'sessions', :only => [:new, :create, :destroy]
+  
+  map.resources :users, :controller => 'users' do |users|
+    users.resource :password, :controller => 'clearance/passwords', :only => [:create, :edit, :update]
+    users.resource :confirmation, :controller => 'clearance/confirmations', :only => [:new, :create]
+  end
   Clearance::Routes.draw(map)
 
   map.published_current 'published/:layout_name/:instance_name/:plate_name',
